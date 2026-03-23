@@ -85,6 +85,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       version: "1.0.0",
       description: "Cuprice MCP Server — manage pricing projects from AI tools",
       endpoint: "POST /mcp",
+      usage: "MCP protocol uses POST for JSON-RPC tool calls. GET returns this info.",
+      tools: [
+        { name: "list-projects", description: "List all Cuprice pricing projects" },
+        { name: "get-project", description: "Get full project details" },
+        { name: "get-shared-project", description: "Get public pricing data by Share ID" },
+        { name: "create-project", description: "Create a new project" },
+        { name: "update-project", description: "Update project settings" },
+        { name: "add-feature", description: "Add a feature to a project's backlog" },
+        { name: "create-plan", description: "Create a pricing plan" },
+        { name: "add-feature-to-plan", description: "Add a feature to a plan" },
+        { name: "publish-project", description: "Publish a project to get a Share ID" },
+        { name: "get-embed-code", description: "Get embed snippet (HTML/Next.js/React)" },
+        { name: "get-receipt", description: "Get Stripe purchase details" },
+      ],
+      docs: "https://docs.cuprice.io/mcp",
     });
   }
 
