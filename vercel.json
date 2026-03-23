@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "api/mcp.ts": {
-      "runtime": "@vercel/node@latest"
-    }
-  },
   "rewrites": [
     { "source": "/mcp", "destination": "/api/mcp" }
   ]

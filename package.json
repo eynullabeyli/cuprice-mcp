@@ -9,11 +9,16 @@
     "start": "node dist/index.js",
     "dev": "tsx src/index.ts"
   },
-  "keywords": ["mcp", "cuprice", "pricing"],
+  "keywords": [
+    "mcp",
+    "cuprice",
+    "pricing"
+  ],
   "author": "Cuprice",
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",
+    "@vercel/node": "^5.6.18",
     "zod": "^4.3.6"
   },
   "devDependencies": {
