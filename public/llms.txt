@@ -1,0 +1,21 @@
+# Cuprice MCP Server
+
+> Manage Cuprice pricing projects from AI tools via Model Context Protocol.
+
+Endpoint: POST https://mcp.cuprice.io/mcp
+Docs: https://docs.cuprice.io/mcp
+Website: https://cuprice.io
+
+## Tools
+
+- [list-projects](https://docs.cuprice.io/mcp#available-tools): List all pricing projects
+- [get-project](https://docs.cuprice.io/mcp#available-tools): Get full project details (plans, features, theme)
+- [get-shared-project](https://docs.cuprice.io/api-reference/share): Get public pricing data by Share ID
+- [create-project](https://docs.cuprice.io/mcp#available-tools): Create a new project
+- [update-project](https://docs.cuprice.io/mcp#available-tools): Update project settings
+- [add-feature](https://docs.cuprice.io/mcp#available-tools): Add a feature to a project's backlog
+- [create-plan](https://docs.cuprice.io/mcp#available-tools): Create a pricing plan
+- [add-feature-to-plan](https://docs.cuprice.io/mcp#available-tools): Add a feature to a plan
+- [publish-project](https://docs.cuprice.io/mcp#available-tools): Publish a project to get a Share ID
+- [get-embed-code](https://docs.cuprice.io/mcp#available-tools): Get embed snippet (HTML/Next.js/React)
+- [get-receipt](https://docs.cuprice.io/api-reference/receipt): Get Stripe purchase details

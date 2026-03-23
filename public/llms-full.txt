@@ -1,0 +1,249 @@
+# Cuprice MCP Server — Full Reference
+
+> Manage Cuprice pricing projects from AI tools via Model Context Protocol.
+
+Endpoint: POST https://mcp.cuprice.io/mcp
+Docs: https://docs.cuprice.io/mcp
+Website: https://cuprice.io
+
+---
+
+## What is Cuprice?
+
+Cuprice lets you build feature-based pricing pages and embed them on any website. Users can pick a plan, customize features, and pay via Stripe — all without leaving your site.
+
+## What is this MCP server?
+
+This server exposes Cuprice's functionality as MCP tools that AI assistants (Cursor, Claude Desktop, Claude Code) can call. You can create projects, add features, build plans, publish, and get embed code — all through natural language.
+
+## Setup
+
+### Remote (no install)
+
+Add to `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "cuprice": {
+      "url": "https://mcp.cuprice.io/mcp"
+    }
+  }
+}
+```
+
+### Local (with auth)
+
+```bash
+git clone https://github.com/eynullabeyli/cuprice-mcp.git
+cd cuprice-mcp && npm install && npm run build
+```
+
+Add to `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "cuprice": {
+      "command": "node",
+      "args": ["/path/to/cuprice-mcp/dist/index.js"],
+      "env": {
+        "CUPRICE_BASE": "https://cuprice.io",
+        "CUPRICE_AUTH_TOKEN": "your-session-token"
+      }
+    }
+  }
+}
+```
+
+---
+
+## Tools Reference
+
+### list-projects
+
+List all your Cuprice pricing projects.
+
+**Input:** none
+
+**Output:** Array of projects with id, name, slug, shareId, currency, plan count, feature count.
+
+---
+
+### get-project
+
+Get full details of a project including plans, features, and theme settings.
+
+**Input:**
+- `slug` (string, required) — Project slug or numeric ID
+
+**Output:** Full project object with all plans, features, theme settings, and configuration.
+
+---
+
+### get-shared-project
+
+Get public pricing data for a shared project. No authentication needed.
+
+**Input:**
+- `shareId` (string, required) — The project's Share ID
+
+**Output:** Public project data including plans with features, pricing, and theme.
+
+---
+
+### create-project
+
+Create a new Cuprice pricing project.
+
+**Input:**
+- `name` (string, required) — Project name
+- `description` (string, optional) — Short description
+- `pricingPageDescription` (string, optional) — Description shown on the pricing page header
+- `currency` (string, optional) — Currency code, default "USD"
+
+**Output:** Created project object.
+
+---
+
+### update-project
+
+Update a project's settings.
+
+**Input:**
+- `slug` (string, required) — Project slug or numeric ID
+- `name` (string, optional) — New name
+- `description` (string, optional) — New description
+- `pricingPageDescription` (string, optional) — New pricing page description
+- `currency` (string, optional) — Currency code
+- `annualDiscount` (number, optional) — Annual discount, e.g. 0.2 = 20%
+- `annualDiscountEnabled` (boolean, optional) — Enable annual billing toggle
+- `checkoutSuccessUrl` (string, optional) — Redirect URL after successful payment
+- `checkoutCancelUrl` (string, optional) — Redirect URL after cancelled payment
+
+**Output:** Updated project object.
+
+---
+
+### add-feature
+
+Add a feature to a project's backlog.
+
+**Input:**
+- `projectId` (number, required) — Project ID
+- `name` (string, required) — Feature name
+- `description` (string, optional) — Feature description
+- `featureType` (string, optional) — "Standart", "Limits", or "Usage Based"
+- `basePrice` (number, optional) — Base price
+- `isCountable` (boolean, optional) — Is this a countable feature
+
+**Output:** Created feature object.
+
+---
+
+### create-plan
+
+Create a new pricing plan in a project.
+
+**Input:**
+- `projectId` (number, required) — Project ID
+- `name` (string, required) — Plan name (e.g. "Pro")
+- `description` (string, optional) — Plan description
+- `order` (number, optional) — Display order (0-based)
+- `isPopular` (boolean, optional) — Show "Most Popular" badge
+
+**Output:** Created plan object.
+
+---
+
+### add-feature-to-plan
+
+Add a feature from the backlog to a pricing plan.
+
+**Input:**
+- `projectId` (number, required) — Project ID
+- `featureId` (number, required) — Feature ID to add
+- `planId` (number, required) — Plan ID to add the feature to
+
+**Output:** Success confirmation with feature details.
+
+---
+
+### publish-project
+
+Publish a project to generate a Share ID for embedding.
+
+**Input:**
+- `projectId` (number, required) — Project ID
+
+**Output:** Object with shareId.
+
+---
+
+### get-embed-code
+
+Get the HTML/React/Next.js embed snippet for a published project.
+
+**Input:**
+- `shareId` (string, required) — The project's Share ID
+- `framework` (string, optional) — "html", "nextjs", or "react". Default: "html"
+
+**Output:** Ready-to-use code snippet for the specified framework.
+
+---
+
+### get-receipt
+
+Get purchase details from a Stripe checkout session.
+
+**Input:**
+- `sessionId` (string, required) — Stripe Checkout session ID
+- `shareId` (string, required) — Project Share ID
+
+**Output:** Receipt with planName, features purchased, total, currency, customer email, billing interval, subscription ID, and metadata.
+
+---
+
+## Cuprice API Endpoints (used internally)
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/share/{shareId} | Get public project data |
+| GET | /api/stripe/receipt?session_id=...&shareId=... | Get purchase details |
+| POST | /api/stripe/checkout | Create checkout for a regular plan |
+| POST | /api/stripe/checkout/custom | Create checkout for a custom plan |
+| GET | /api/projects | List all projects (auth required) |
+| GET | /api/projects/{slug} | Get project details (auth required) |
+| POST | /api/projects | Create project (auth required) |
+| PUT | /api/projects/{slug} | Update project (auth required) |
+| POST | /api/projects/{id}/backlog | Add feature (auth required) |
+| POST | /api/projects/{id}/plans | Create plan (auth required) |
+| POST | /api/projects/{id}/backlog/{featureId}/move | Add feature to plan (auth required) |
+| POST | /api/projects/{id}/publish | Publish project (auth required) |
+
+## Embed Widget
+
+Add to any HTML page:
+
+```html
+<div data-cuprice-id="YOUR_SHARE_ID"></div>
+<script src="https://cuprice.io/embed.js" async></script>
+```
+
+## Feature Gating
+
+After Stripe checkout, the success URL receives a `session_id`. Call the receipt API to get which features were purchased:
+
+- **Regular plans:** Receipt metadata contains `planId`. Look up features via Share API.
+- **Custom plans:** Receipt metadata contains `featureDetails_0`, `featureDetails_1`, etc. Join and parse as JSON to get feature names.
+
+## CSS Customization
+
+Target elements with `cuprice-` prefixed class names:
+
+- `.cuprice-pricing-card` — Plan cards
+- `.cuprice-pricing-button` — "Choose Plan" buttons
+- `.cuprice-pricing-badge` — "Most Popular" badge
+- `.cuprice-billing-toggle` — Monthly/Annual toggle
+- `.cuprice-custom-plan-card` — Custom plan card
+- `.cuprice-custom-plan-button` — "Create Now" button
