@@ -1,63 +1,25 @@
 # Cuprice MCP Server
 
-MCP (Model Context Protocol) server for managing Cuprice pricing projects from AI tools like Cursor, Claude Desktop, and Claude Code.
+Public MCP (Model Context Protocol) server for integrating Cuprice pricing widgets from AI tools like Cursor, Claude Desktop, and Claude Code.
 
 ## Tools
 
 | Tool | Description |
 |------|-------------|
-| `list-projects` | List all your pricing projects |
-| `get-project` | Get full project details (plans, features, theme) |
-| `get-shared-project` | Get public pricing data by Share ID |
-| `create-project` | Create a new project |
-| `update-project` | Update project settings |
-| `add-feature` | Add a feature to a project's backlog |
-| `create-plan` | Create a pricing plan |
-| `add-feature-to-plan` | Add a feature to a plan |
-| `publish-project` | Publish a project to get a Share ID |
-| `get-embed-code` | Get embed snippet (HTML, Next.js, or React) |
-| `get-receipt` | Get purchase details from a Stripe session |
+| `get-pricing` | Get public pricing data (plans, features, theme) by Share ID |
+| `get-embed-code` | Get embed snippet for HTML, Next.js, or React |
+| `get-receipt` | Get Stripe purchase details from a checkout session |
+| `get-css-classes` | Get CSS class names for widget customization |
 
-## Setup
+## Use with Cursor (remote — recommended)
 
-```bash
-npm install
-npm run build
-```
-
-## Use with Cursor
-
-Add to `.cursor/mcp.json` in your project:
+Add to `.cursor/mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "cuprice": {
-      "command": "node",
-      "args": ["/path/to/cuprice-mcp/dist/index.js"],
-      "env": {
-        "CUPRICE_BASE": "http://localhost:3000",
-        "CUPRICE_AUTH_TOKEN": "your-session-token"
-      }
-    }
-  }
-}
-```
-
-## Use with Claude Desktop
-
-Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "cuprice": {
-      "command": "node",
-      "args": ["/absolute/path/to/cuprice-mcp/dist/index.js"],
-      "env": {
-        "CUPRICE_BASE": "http://localhost:3000",
-        "CUPRICE_AUTH_TOKEN": "your-session-token"
-      }
+      "url": "https://mcp.cuprice.io/mcp"
     }
   }
 }
@@ -66,7 +28,29 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 ## Use with Claude Code
 
 ```bash
-claude mcp add cuprice node /path/to/cuprice-mcp/dist/index.js \
-  -e CUPRICE_BASE=http://localhost:3000 \
-  -e CUPRICE_AUTH_TOKEN=your-session-token
+claude mcp add cuprice --url https://mcp.cuprice.io/mcp
 ```
+
+## Self-host
+
+```bash
+git clone https://github.com/eynullabeyli/cuprice-mcp.git
+cd cuprice-mcp
+npm install
+npm run build
+npm start
+```
+
+## Deploy to Vercel
+
+```bash
+vercel deploy --prod
+```
+
+Set `CUPRICE_BASE` env var in Vercel project settings (default: `https://cuprice.io`).
+
+## Links
+
+- [Documentation](https://docs.cuprice.io/mcp)
+- [llms.txt](https://mcp.cuprice.io/llms.txt)
+- [llms-full.txt](https://mcp.cuprice.io/llms-full.txt)

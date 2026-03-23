@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cuprice MCP Server — Manage Pricing Projects from AI Tools</title>
-  <meta name="description" content="MCP (Model Context Protocol) server for Cuprice. Manage pricing projects, create plans, add features, and generate embed code from Cursor, Claude Desktop, and Claude Code.">
+  <meta name="description" content="Public MCP server for Cuprice. Fetch pricing data, generate embed code, look up Stripe receipts, and get CSS class names — from Cursor, Claude Desktop, and Claude Code.">
   <meta name="keywords" content="cuprice, mcp, model context protocol, pricing, cursor, claude, ai tools, embed, stripe">
   <meta name="author" content="Cuprice">
   <meta name="robots" content="index, follow">
@@ -80,7 +80,7 @@
     </div>
     <div class="badge" aria-label="Version 1.0.0">v1.0.0</div>
     <h1>Cuprice MCP Server</h1>
-    <p class="subtitle">Manage pricing projects from AI tools like Cursor, Claude Desktop, and Claude Code.</p>
+    <p class="subtitle">Public API tools for integrating Cuprice pricing widgets from Cursor, Claude Desktop, and Claude Code.</p>
     <div class="endpoint" role="status"><span>POST</span> /mcp</div>
 
     <nav class="links" aria-label="Quick links">
@@ -91,28 +91,21 @@
     </nav>
 
     <section class="tools" aria-label="Available tools">
-      <h2>11 Tools Available</h2>
+      <h2>4 Public Tools</h2>
       <ul>
-        <li><code>list-projects</code> <span>List all projects</span></li>
-        <li><code>get-project</code> <span>Get project details</span></li>
-        <li><code>get-shared-project</code> <span>Public data by Share ID</span></li>
-        <li><code>create-project</code> <span>Create a new project</span></li>
-        <li><code>update-project</code> <span>Update settings</span></li>
-        <li><code>add-feature</code> <span>Add to backlog</span></li>
-        <li><code>create-plan</code> <span>Create a plan</span></li>
-        <li><code>add-feature-to-plan</code> <span>Assign feature to plan</span></li>
-        <li><code>publish-project</code> <span>Publish &amp; get Share ID</span></li>
-        <li><code>get-embed-code</code> <span>HTML/Next.js/React snippet</span></li>
+        <li><code>get-pricing</code> <span>Plans, features &amp; theme by Share ID</span></li>
+        <li><code>get-embed-code</code> <span>HTML / Next.js / React snippet</span></li>
         <li><code>get-receipt</code> <span>Stripe purchase details</span></li>
+        <li><code>get-css-classes</code> <span>CSS selectors for customization</span></li>
       </ul>
     </section>
 
     <p class="sr-only">
-      Cuprice MCP Server is a Model Context Protocol server that enables AI assistants to manage pricing projects.
-      It supports creating projects, adding features, building pricing plans, publishing for embed, and retrieving Stripe payment receipts.
-      The server is available as a hosted endpoint at mcp.cuprice.io/mcp or can be self-hosted.
-      Full documentation is available at docs.cuprice.io/mcp.
-      Machine-readable descriptions are at mcp.cuprice.io/llms.txt and mcp.cuprice.io/llms-full.txt.
+      Cuprice MCP Server provides public API tools for integrating Cuprice pricing widgets via Model Context Protocol.
+      Tools: get-pricing (fetch plans and features by Share ID), get-embed-code (generate HTML/Next.js/React snippets),
+      get-receipt (look up Stripe checkout purchases), get-css-classes (CSS selectors for widget customization).
+      Hosted at mcp.cuprice.io/mcp. Documentation at docs.cuprice.io/mcp.
+      Machine-readable at mcp.cuprice.io/llms.txt and mcp.cuprice.io/llms-full.txt.
     </p>
   </main>
 </body>

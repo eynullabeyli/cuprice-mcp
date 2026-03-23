@@ -1,12 +1,7 @@
 {
   "mcpServers": {
     "cuprice": {
-      "command": "node",
-      "args": ["./dist/index.js"],
-      "env": {
-        "CUPRICE_BASE": "http://localhost:3000",
-        "CUPRICE_AUTH_TOKEN": ""
-      }
+      "url": "https://mcp.cuprice.io/mcp"
     }
   }
 }
