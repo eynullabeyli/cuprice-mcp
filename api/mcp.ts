@@ -3,7 +3,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { z } from "zod";
 
-const CUPRICE_BASE = process.env.CUPRICE_BASE || "https://cuprice.com";
+const CUPRICE_BASE = process.env.CUPRICE_BASE || "https://cuprice.io";
 const AUTH_TOKEN = process.env.CUPRICE_AUTH_TOKEN || "";
 
 async function cupriceAPI(path: string, options?: RequestInit) {
