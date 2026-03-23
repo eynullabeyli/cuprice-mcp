@@ -1,14 +1,16 @@
 # Cuprice MCP Server
 
-> Public API tools for integrating Cuprice pricing widgets via Model Context Protocol.
-
-Endpoint: POST https://mcp.cuprice.io/mcp
-Docs: https://docs.cuprice.io/mcp
-Website: https://cuprice.io
+> Public MCP server for integrating Cuprice pricing widgets from AI tools.
 
 ## Tools
 
-- [get-pricing](https://docs.cuprice.io/api-reference/share): Get public pricing data (plans, features, theme) by Share ID
-- [get-embed-code](https://docs.cuprice.io/embed/overview): Get embed snippet for HTML, Next.js, or React
-- [get-receipt](https://docs.cuprice.io/api-reference/receipt): Get Stripe purchase details from a checkout session
-- [get-css-classes](https://docs.cuprice.io/customization/custom-css): Get CSS class names for widget customization
+- [get-pricing](https://docs.cuprice.io/mcp#get-pricing): Get public pricing data (plans, features, theme) by Share ID
+- [get-embed-code](https://docs.cuprice.io/mcp#get-embed-code): Get embed snippet for HTML, Next.js, or React
+- [get-receipt](https://docs.cuprice.io/mcp#get-receipt): Get Stripe purchase details from a checkout session
+- [get-css-classes](https://docs.cuprice.io/mcp#get-css-classes): Get CSS class names for widget customization
+
+## Resources
+
+- [Documentation](https://docs.cuprice.io/mcp)
+- [Full Reference](https://mcp.cuprice.io/llms-full.txt)
+- [Cuprice Docs](https://docs.cuprice.io/llms.txt)
