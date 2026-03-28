@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /mcp
+
+Sitemap: https://mcp.cuprice.io/sitemap.xml
