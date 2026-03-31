@@ -132,17 +132,107 @@ After Stripe checkout, the success URL receives a `session_id`. Use the get-rece
 
 ## API v1 — Authenticated REST API
 
-For full CRUD operations, use the REST API directly with an API key.
+All v1 endpoints require an API key passed as `Authorization: Bearer cpk_...`.
 
-Auth: `Authorization: Bearer cpk_...` (create keys in Dashboard → Settings → API Keys)
+API keys are created in Dashboard → Settings → API Keys. Keys with `read` permission can list/read. Keys with `read_write` can also create, update, delete.
+
 Base URL: `https://cuprice.io/api/v1`
-Docs: https://docs.cuprice.io/api-reference/overview
 
-### Endpoints
+---
 
-Projects: GET/POST /api/v1/projects | GET/PUT/DELETE /api/v1/projects/{slug}
-Features: GET/POST /api/v1/projects/{slug}/features | GET/PUT/DELETE .../{featureId}
-Plans: GET/POST /api/v1/projects/{slug}/plans | GET/PUT/DELETE .../{planId} | POST .../duplicate
-Plan Features: GET/POST/DELETE /api/v1/projects/{slug}/plans/{planId}/features
+### Projects
 
-PUT /api/v1/projects/{slug} accepts a `theme` object with: primaryColor, fontFamily, borderRadius, customCSS, all color fields, alignment, and 40+ design settings.
+#### List Projects
+`GET /api/v1/projects`
+Returns: `{ projects: [{ id, name, slug, description, shareId, currency, isActive, createdAt, updatedAt, _count: { features, pricingPlans } }] }`
+
+#### Create Project
+`POST /api/v1/projects` (read_write)
+Body: `{ name (required, max 100), description, pricingPageDescription, currency (default "USD") }`
+Returns: created project object (status 201)
+
+#### Get Project
+`GET /api/v1/projects/{slug}`
+Returns: project with themeSettings, features (with countableData), pricingPlans (with planFeatures)
+
+#### Update Project
+`PUT /api/v1/projects/{slug}` (read_write)
+Body: `{ name, description, pricingPageDescription, currency, annualDiscount, annualDiscountEnabled, isActive, checkoutSuccessUrl, checkoutCancelUrl, checkoutTestSuccessUrl, checkoutTestCancelUrl, theme }`
+The `theme` object accepts all design settings:
+- Colors: primaryColor, hoverColor, buttonTextColor, pricingBackgroundColor, pricingBorderColor, pricingHeaderTextColor, pricingPriceColor, pricingTextColor, pricingDescriptionColor, pricingHeaderBackgroundColor
+- Badge: popularBadgeColor, popularBadgeTextColor, popularBadgeBorderColor, popularBadgePosition
+- Custom plan card: customPlanButtonColor, customPlanButtonTextColor, customPlanCardBackgroundColor, customPlanCardBorderColor, customPlanCardTitleColor, customPlanCardFeatureColor, customPlanCardCheckmarkColor, customPlanCardBadgeBgColor, customPlanCardBadgeTextColor, customPlanCardBadgeBorderColor
+- Layout: fontFamily, borderRadius, headerAlign, descriptionAlign, toggleAlign, showProjectName, showPricingHeader
+- Custom CSS: customCSS (string with CSS rules)
+All fields optional — only provided fields are updated.
+
+#### Delete Project
+`DELETE /api/v1/projects/{slug}` (read_write)
+Cascades: deletes all plans, features, theme.
+Returns: `{ success: true }`
+
+---
+
+### Features
+
+#### List Features
+`GET /api/v1/projects/{slug}/features`
+Returns: `{ features: [{ id, name, description, basePrice, featureType, isCountable, order, countableData }] }`
+
+#### Create Feature
+`POST /api/v1/projects/{slug}/features` (read_write)
+Body: `{ name (required), description, basePrice (required >= 0), isCountable, featureType ("Standart"|"Limits"|"Usage Based"), usageCount, condition, countPrice, eventAggregationMethod }`
+Max 50 features per project. Returns: created feature (status 201)
+
+#### Update Feature
+`PUT /api/v1/projects/{slug}/features/{featureId}` (read_write)
+Body: `{ name, description, basePrice, isCountable, featureType, usageCount, condition, countPrice }`
+All fields optional.
+
+#### Delete Feature
+`DELETE /api/v1/projects/{slug}/features/{featureId}` (read_write)
+Also removes the feature from all plans. Returns: `{ success: true }`
+
+---
+
+### Plans
+
+#### List Plans
+`GET /api/v1/projects/{slug}/plans`
+Returns: `{ plans: [{ id, name, description, isPopular, isVisible, basePrice, isFree, planFeatures: [{ featureId, multiplier, feature }] }] }`
+
+#### Create Plan
+`POST /api/v1/projects/{slug}/plans` (read_write)
+Body: `{ name (required), description, isPopular, isVisible, basePrice, isFree, features: [{ featureId, multiplier }] }`
+Returns: created plan with features (status 201)
+
+#### Update Plan
+`PUT /api/v1/projects/{slug}/plans/{planId}` (read_write)
+Body: `{ name, description, isPopular, isVisible, basePrice, isFree, freemiumDay, isPerUserPricing, perUserMultiplier }`
+
+#### Delete Plan
+`DELETE /api/v1/projects/{slug}/plans/{planId}` (read_write)
+Returns: `{ success: true }`
+
+#### Duplicate Plan
+`POST /api/v1/projects/{slug}/plans/{planId}/duplicate` (read_write)
+Body: `{ name }` (optional, defaults to "Original (Copy)")
+Copies all plan features. Returns: duplicated plan (status 201)
+
+---
+
+### Plan Features (assign features to plans)
+
+#### List Plan Features
+`GET /api/v1/projects/{slug}/plans/{planId}/features`
+Returns: `{ features: [{ id, planId, featureId, multiplier, order, feature }] }`
+
+#### Add Features to Plan
+`POST /api/v1/projects/{slug}/plans/{planId}/features` (read_write)
+Body (single): `{ featureId, multiplier }`
+Body (batch): `{ features: [{ featureId, multiplier }] }`
+Skips already assigned features. Returns: `{ added, skipped, features }`
+
+#### Remove Feature from Plan
+`DELETE /api/v1/projects/{slug}/plans/{planId}/features?featureId={id}` (read_write)
+Returns: `{ success: true }`
