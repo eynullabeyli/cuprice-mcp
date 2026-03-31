@@ -9,6 +9,17 @@
 - [get-receipt](https://docs.cuprice.io/mcp#get-receipt): Get Stripe purchase details from a checkout session
 - [get-css-classes](https://docs.cuprice.io/mcp#get-css-classes): Get CSS class names for widget customization
 
+## API v1 (Authenticated)
+
+For full CRUD operations, use the REST API with an API key (`Authorization: Bearer cpk_...`):
+
+- [API Overview](https://docs.cuprice.io/api-reference/overview): All endpoints
+- [Authentication](https://docs.cuprice.io/api-reference/authentication): API key setup
+- Projects: GET/POST /api/v1/projects, GET/PUT/DELETE /api/v1/projects/:slug
+- Features: GET/POST /api/v1/projects/:slug/features, PUT/DELETE .../:featureId
+- Plans: GET/POST /api/v1/projects/:slug/plans, PUT/DELETE .../:planId, POST .../duplicate
+- Plan Features: GET/POST/DELETE /api/v1/projects/:slug/plans/:planId/features
+
 ## Resources
 
 - [Documentation](https://docs.cuprice.io/mcp)

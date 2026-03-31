@@ -127,3 +127,22 @@ After Stripe checkout, the success URL receives a `session_id`. Use the get-rece
 
 - **Regular plans:** Receipt metadata contains `planId`. Use get-pricing to look up plan features.
 - **Custom plans:** Receipt metadata contains `featureDetails_0`, `featureDetails_1`, etc. Join and parse as JSON to get feature names and prices.
+
+---
+
+## API v1 — Authenticated REST API
+
+For full CRUD operations, use the REST API directly with an API key.
+
+Auth: `Authorization: Bearer cpk_...` (create keys in Dashboard → Settings → API Keys)
+Base URL: `https://cuprice.io/api/v1`
+Docs: https://docs.cuprice.io/api-reference/overview
+
+### Endpoints
+
+Projects: GET/POST /api/v1/projects | GET/PUT/DELETE /api/v1/projects/{slug}
+Features: GET/POST /api/v1/projects/{slug}/features | GET/PUT/DELETE .../{featureId}
+Plans: GET/POST /api/v1/projects/{slug}/plans | GET/PUT/DELETE .../{planId} | POST .../duplicate
+Plan Features: GET/POST/DELETE /api/v1/projects/{slug}/plans/{planId}/features
+
+PUT /api/v1/projects/{slug} accepts a `theme` object with: primaryColor, fontFamily, borderRadius, customCSS, all color fields, alignment, and 40+ design settings.
