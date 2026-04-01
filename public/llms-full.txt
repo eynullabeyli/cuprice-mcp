@@ -62,7 +62,7 @@ Get a ready-to-use code snippet to embed a Cuprice pricing table.
 **HTML output example:**
 ```html
 <div data-cuprice-id="YOUR_SHARE_ID"></div>
-<script src="https://cuprice.io/embed.js" async></script>
+<script src="https://app.cuprice.io/embed.js" async></script>
 ```
 
 ---
@@ -116,7 +116,7 @@ Add to any HTML page:
 
 ```html
 <div data-cuprice-id="YOUR_SHARE_ID"></div>
-<script src="https://cuprice.io/embed.js" async></script>
+<script src="https://app.cuprice.io/embed.js" async></script>
 ```
 
 The widget auto-resizes, loads asynchronously, and is CSS-isolated.
