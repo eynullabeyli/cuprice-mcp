@@ -22,21 +22,32 @@ export function createServer(): McpServer {
   });
 
   server.registerTool("get-embed-code", {
-    description: "Get the embed code snippet to add a Cuprice pricing table to a website",
+    description: "Get embed code for Cuprice pricing table or billing widget. Supports HTML, React, Next.js, and Vue.",
     inputSchema: {
       shareId: z.string().describe("The project's Share ID"),
-      framework: z.enum(["html", "nextjs", "react"]).optional().describe("Target framework (default: html)"),
+      framework: z.enum(["html", "nextjs", "react", "vue"]).optional().describe("Target framework (default: html)"),
+      widget: z.enum(["pricing", "billing"]).optional().describe("Widget type: pricing (default) or billing"),
     },
-  }, async ({ shareId, framework }) => {
+  }, async ({ shareId, framework, widget }) => {
     const base = CUPRICE_BASE;
+    const attr = widget === "billing" ? "data-cuprice-billing" : "data-cuprice-id";
+    const componentName = widget === "billing" ? "Billing" : "Pricing";
     let code: string;
+
     if (framework === "nextjs") {
-      code = `import Script from "next/script";\n\nexport default function Pricing() {\n  return (\n    <section>\n      <div data-cuprice-id="${shareId}"></div>\n      <Script src="${base}/embed.js" strategy="lazyOnload" />\n    </section>\n  );\n}`;
+      code = `import Script from "next/script";\n\nexport default function ${componentName}() {\n  return (\n    <section>\n      <div ${attr}="${shareId}"></div>\n      <Script src="${base}/embed.js" strategy="lazyOnload" />\n    </section>\n  );\n}`;
     } else if (framework === "react") {
-      code = `import { useEffect } from "react";\n\nexport default function Pricing() {\n  useEffect(() => {\n    const s = document.createElement("script");\n    s.src = "${base}/embed.js";\n    s.async = true;\n    document.body.appendChild(s);\n    return () => { document.body.removeChild(s); };\n  }, []);\n\n  return <div data-cuprice-id="${shareId}" />;\n}`;
+      code = `import { useEffect } from "react";\n\nexport default function ${componentName}() {\n  useEffect(() => {\n    const s = document.createElement("script");\n    s.src = "${base}/embed.js";\n    s.async = true;\n    document.body.appendChild(s);\n    return () => {\n      document.body.removeChild(s);\n      if (window.Cuprice) window.Cuprice.destroy();\n    };\n  }, []);\n\n  return <div ${attr}="${shareId}" />;\n}`;
+    } else if (framework === "vue") {
+      code = `<template>\n  <div ${attr}="${shareId}"></div>\n</template>\n\n<script setup>\nimport { onMounted, onUnmounted } from "vue";\n\nlet script;\nonMounted(() => {\n  script = document.createElement("script");\n  script.src = "${base}/embed.js";\n  script.async = true;\n  document.body.appendChild(script);\n});\nonUnmounted(() => {\n  if (script) document.body.removeChild(script);\n  if (window.Cuprice) window.Cuprice.destroy();\n});\n</script>`;
     } else {
-      code = `<div data-cuprice-id="${shareId}"></div>\n<script src="${base}/embed.js" async></script>`;
+      code = `<!-- ${componentName} widget -->\n<div ${attr}="${shareId}"></div>\n<script src="${base}/embed.js" async></script>`;
     }
+
+    if (widget === "billing") {
+      code += `\n\n/* Listen for plan selection events */\ndocument.addEventListener("cuprice:plan-selected", function(e) {\n  console.log("Plan selected:", e.detail);\n  // e.detail = { planId, planName, billingInterval, shareId }\n});`;
+    }
+
     return { content: [{ type: "text", text: code }] };
   });
 
@@ -66,6 +77,9 @@ export function createServer(): McpServer {
       { selector: ".cuprice-custom-plan-badge", description: "\"Custom\" badge" },
       { selector: ".cuprice-custom-plan-title", description: "Custom card title" },
       { selector: ".cuprice-custom-plan-feature-text", description: "Feature bullet text" },
+      { selector: ".cuprice-custom-plan-feature-icon", description: "Feature checkmark icon" },
+      { selector: ".cuprice-comparison-table", description: "Feature comparison table container" },
+      { selector: ".cuprice-powered-by", description: "Powered by Cuprice footer" },
     ];
     return { content: [{ type: "text", text: JSON.stringify(classes, null, 2) }] };
   });
