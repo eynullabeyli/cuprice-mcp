@@ -2,12 +2,14 @@
   "name": "cuprice-mcp",
   "version": "1.0.0",
   "description": "MCP server for Cuprice pricing platform",
-  "main": "dist/index.js",
+  "main": "dist/src/server.js",
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "tsx src/index.ts"
+    "start": "node dist/src/server.js",
+    "start:stdio": "node dist/src/index.js",
+    "dev": "tsx src/server.ts",
+    "dev:stdio": "tsx src/index.ts"
   },
   "keywords": [
     "mcp",
@@ -19,9 +21,11 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",
     "@vercel/node": "^5.6.18",
+    "express": "^4.22.2",
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "@types/node": "^25.5.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
