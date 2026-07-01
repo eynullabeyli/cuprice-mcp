@@ -1,7 +1,0 @@
-{
-  "buildCommand": "",
-  "outputDirectory": "public",
-  "rewrites": [
-    { "source": "/mcp", "destination": "/api/mcp" }
-  ]
-}

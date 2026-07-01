@@ -1,13 +1,37 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 
-const CUPRICE_BASE = process.env.CUPRICE_BASE || "https://cuprice.io";
+// The public API, the receipt endpoint, and embed.js all live on the app host.
+const CUPRICE_BASE = process.env.CUPRICE_BASE || "https://app.cuprice.io";
 
-async function cupriceAPI(path: string) {
+type ToolResult = {
+  content: { type: "text"; text: string }[];
+  isError?: boolean;
+};
+
+/** Fetch JSON from the Cuprice public API with clear errors on failure. */
+async function cupriceAPI(path: string): Promise<unknown> {
   const res = await fetch(`${CUPRICE_BASE}${path}`, {
-    headers: { "Content-Type": "application/json" },
+    headers: { Accept: "application/json" },
   });
-  return res.json();
+  const body = await res.text();
+  if (!res.ok) {
+    throw new Error(`Cuprice API ${res.status} for ${path}${body ? `: ${body.slice(0, 200)}` : ""}`);
+  }
+  try {
+    return JSON.parse(body);
+  } catch {
+    throw new Error(`Cuprice API returned invalid JSON for ${path}`);
+  }
+}
+
+function jsonResult(data: unknown): ToolResult {
+  return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
+}
+
+function errorResult(err: unknown): ToolResult {
+  const message = err instanceof Error ? err.message : String(err);
+  return { content: [{ type: "text", text: `Error: ${message}` }], isError: true };
 }
 
 export function createServer(): McpServer {
@@ -17,8 +41,12 @@ export function createServer(): McpServer {
     description: "Get public pricing data for a Cuprice project — plans, features, prices, and theme settings",
     inputSchema: { shareId: z.string().describe("The project's Share ID") },
   }, async ({ shareId }) => {
-    const data = await cupriceAPI(`/api/share/${shareId}`);
-    return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
+    try {
+      const data = await cupriceAPI(`/api/share/${encodeURIComponent(shareId)}`);
+      return jsonResult(data);
+    } catch (err) {
+      return errorResult(err);
+    }
   });
 
   server.registerTool("get-embed-code", {
@@ -58,8 +86,14 @@ export function createServer(): McpServer {
       shareId: z.string().describe("The project's Share ID"),
     },
   }, async ({ sessionId, shareId }) => {
-    const receipt = await cupriceAPI(`/api/stripe/receipt?session_id=${encodeURIComponent(sessionId)}&shareId=${shareId}`);
-    return { content: [{ type: "text", text: JSON.stringify(receipt, null, 2) }] };
+    try {
+      const receipt = await cupriceAPI(
+        `/api/stripe/receipt?session_id=${encodeURIComponent(sessionId)}&shareId=${encodeURIComponent(shareId)}`,
+      );
+      return jsonResult(receipt);
+    } catch (err) {
+      return errorResult(err);
+    }
   });
 
   server.registerTool("get-css-classes", {
@@ -81,7 +115,7 @@ export function createServer(): McpServer {
       { selector: ".cuprice-comparison-table", description: "Feature comparison table container" },
       { selector: ".cuprice-powered-by", description: "Powered by Cuprice footer" },
     ];
-    return { content: [{ type: "text", text: JSON.stringify(classes, null, 2) }] };
+    return jsonResult(classes);
   });
 
   return server;

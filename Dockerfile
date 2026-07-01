@@ -8,7 +8,6 @@ COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts --no-audit --no-fund
 COPY tsconfig.json ./
 COPY src ./src
-COPY api ./api
 RUN npx tsc
 
 FROM base AS runner

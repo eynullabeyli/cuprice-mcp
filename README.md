@@ -7,7 +7,7 @@ Public MCP (Model Context Protocol) server for integrating Cuprice pricing widge
 | Tool | Description |
 |------|-------------|
 | `get-pricing` | Get public pricing data (plans, features, theme) by Share ID |
-| `get-embed-code` | Get embed snippet for HTML, Next.js, or React |
+| `get-embed-code` | Get embed snippet for HTML, Next.js, React, or Vue (pricing or billing widget) |
 | `get-receipt` | Get Stripe purchase details from a checkout session |
 | `get-css-classes` | Get CSS class names for widget customization |
 
@@ -38,16 +38,16 @@ git clone https://github.com/eynullabeyli/cuprice-mcp.git
 cd cuprice-mcp
 npm install
 npm run build
-npm start
+npm start        # HTTP server on :5000 (POST /mcp), or `npm run start:stdio`
 ```
 
-## Deploy to Vercel
+## Docker
 
 ```bash
-vercel deploy --prod
+docker compose up --build -d
 ```
 
-Set `CUPRICE_BASE` env var in Vercel project settings (default: `https://cuprice.io`).
+Set `CUPRICE_BASE` to point at the Cuprice app host (default: `https://app.cuprice.io`).
 
 ## Links
 

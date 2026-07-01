@@ -136,7 +136,7 @@ All v1 endpoints require an API key passed as `Authorization: Bearer cpk_...`.
 
 API keys are created in Dashboard → Settings → API Keys. Keys with `read` permission can list/read. Keys with `read_write` can also create, update, delete.
 
-Base URL: `https://cuprice.io/api/v1`
+Base URL: `https://app.cuprice.io/api/v1`
 
 ---
 
