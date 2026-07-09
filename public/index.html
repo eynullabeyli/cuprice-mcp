@@ -4,21 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-NF36H66K');</script>
-  <!-- End Google Tag Manager -->
   <title>Cuprice MCP Server — Manage Pricing Projects from AI Tools</title>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/logo.png">
   <meta name="description" content="Public MCP server for Cuprice. Fetch pricing data, generate embed code, look up Stripe receipts, and get CSS class names — from Cursor, Claude Desktop, and Claude Code.">
   <meta name="keywords" content="cuprice, mcp, model context protocol, pricing, cursor, claude, ai tools, embed, stripe, saas pricing, pricing widget, ai integration, developer tools">
   <meta name="author" content="Cuprice">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="var(--color-emerald-600)">
+  <meta name="theme-color" content="#059669">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://mcp.cuprice.io">
   <link rel="dns-prefetch" href="https://cuprice.io">
@@ -30,19 +21,12 @@
   <meta property="og:description" content="Public API tools for integrating Cuprice pricing widgets from Cursor, Claude Desktop, and Claude Code. Fetch pricing data, generate embed code, and more.">
   <meta property="og:url" content="https://mcp.cuprice.io">
   <meta property="og:site_name" content="Cuprice">
-  <meta property="og:image" content="https://mcp.cuprice.io/logo.png">
-  <meta property="og:image:width" content="120">
-  <meta property="og:image:height" content="120">
-  <meta property="og:image:alt" content="Cuprice logo">
   <meta property="og:locale" content="en_US">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Cuprice MCP Server — Manage Pricing from AI Tools">
   <meta name="twitter:description" content="Public API tools for integrating Cuprice pricing widgets from Cursor, Claude Desktop, and Claude Code.">
-  <meta name="twitter:image" content="https://mcp.cuprice.io/logo.png">
-  <meta name="twitter:image:alt" content="Cuprice logo">
-
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -53,7 +37,6 @@
     "url": "https://mcp.cuprice.io",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
-    "image": "https://mcp.cuprice.io/logo.png",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -62,8 +45,7 @@
     "creator": {
       "@type": "Organization",
       "name": "Cuprice",
-      "url": "https://cuprice.io",
-      "logo": "https://mcp.cuprice.io/logo.png"
+      "url": "https://cuprice.io"
     },
     "softwareVersion": "1.0.0",
     "documentation": "https://docs.cuprice.io/mcp",
@@ -95,9 +77,9 @@
     .endpoint { background: #1e1e1e; color: #e6db74; font-family: "SF Mono", Monaco, monospace; font-size: 13px; padding: 12px 16px; border-radius: 8px; margin-bottom: 24px; }
     .endpoint span { color: #a6e22e; }
     .links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
-    .links a { font-size: 13px; font-weight: 500; color: var(--color-emerald-600); text-decoration: none; padding: 8px 16px; border: 1px solid #d1d5db; border-radius: 6px; transition: all 0.15s; }
-    .links a:hover { background: var(--color-emerald-600); color: white; border-color: var(--color-emerald-600); }
-    .badge { display: inline-block; font-size: 11px; font-weight: 600; color: var(--color-emerald-600); background: #e8f5ee; padding: 2px 8px; border-radius: 99px; margin-bottom: 16px; }
+    .links a { font-size: 13px; font-weight: 500; color: #059669; text-decoration: none; padding: 8px 16px; border: 1px solid #d1d5db; border-radius: 6px; transition: all 0.15s; }
+    .links a:hover { background: #059669; color: white; border-color: #059669; }
+    .badge { display: inline-block; font-size: 11px; font-weight: 600; color: #059669; background: #e8f5ee; padding: 2px 8px; border-radius: 99px; margin-bottom: 16px; }
     .tools { text-align: left; margin: 0 auto; max-width: 420px; }
     .tools h2 { font-size: 13px; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; text-align: center; }
     .tools ul { list-style: none; }
@@ -109,12 +91,7 @@
   </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NF36H66K"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
   <main class="container">
-    <img src="/logo.png" alt="Cuprice" width="120" height="auto" style="margin-bottom: 24px;">
     <div class="badge" aria-label="Version 1.0.0">v1.0.0</div>
     <h1>Cuprice MCP Server</h1>
     <p class="subtitle">Public API tools for integrating Cuprice pricing widgets from Cursor, Claude Desktop, and Claude Code.</p>
