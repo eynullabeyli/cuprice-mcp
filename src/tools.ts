@@ -113,20 +113,21 @@ export function createServer(): McpServer {
   });
 
   server.registerTool("get-receipt", {
-    description: "Get purchase details from a Stripe checkout session — plan name, features purchased, amount, customer info",
+    description: "[Deprecated] Stripe checkout receipts are no longer available. Use checkout-payload handoff and your payment provider for receipts.",
     inputSchema: {
-      sessionId: z.string().describe("Stripe Checkout session ID"),
+      sessionId: z.string().describe("Legacy Stripe Checkout session ID (deprecated)"),
       shareId: z.string().describe("The project's Share ID"),
     },
-  }, async ({ sessionId, shareId }) => {
-    try {
-      const receipt = await cupriceAPI(
-        `/api/stripe/receipt?session_id=${encodeURIComponent(sessionId)}&shareId=${encodeURIComponent(shareId)}`,
-      );
-      return jsonResult(receipt);
-    } catch (err) {
-      return errorResult(err);
-    }
+  }, async () => {
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify({
+          deprecated: true,
+          error: "get-receipt is deprecated. Cuprice uses checkout handoff — fetch plan details via get-pricing and handle receipts on your payment provider.",
+        }, null, 2),
+      }],
+    };
   });
 
   server.registerTool("get-css-classes", {
