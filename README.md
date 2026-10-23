@@ -2,7 +2,7 @@
 
 Public MCP (Model Context Protocol) server for integrating Cuprice pricing widgets from AI tools like Cursor, Claude Desktop, and Claude Code.
 
-This repository is a Cuprice-specific MCP adapter. It exposes a small set of public tools for reading pricing data, generating embed snippets, and retrieving purchase details from Cuprice-backed Stripe checkouts.
+This repository is a Cuprice-specific MCP adapter. It exposes a small set of read-only public tools for reading pricing data, generating embed snippets, and listing the widget's CSS classes. No API key is needed.
 
 ## Tools
 
@@ -10,7 +10,7 @@ This repository is a Cuprice-specific MCP adapter. It exposes a small set of pub
 |------|-------------|
 | `get-pricing` | Get public pricing data (plans, features, theme) by Share ID |
 | `get-embed-code` | Get embed snippet for HTML, Next.js, React, or Vue (pricing or billing widget) |
-| `get-receipt` | Get Stripe purchase details from a checkout session |
+| `get-receipt` | Deprecated. Stripe checkout was removed; it returns a deprecation notice |
 | `get-css-classes` | Get CSS class names for widget customization |
 
 ## Remote usage
@@ -32,7 +32,7 @@ Add to `.cursor/mcp.json`:
 ### Claude Code
 
 ```bash
-claude mcp add cuprice --url https://mcp.cuprice.io/mcp
+claude mcp add --transport http cuprice https://mcp.cuprice.io/mcp
 ```
 
 ## Self-host
@@ -60,6 +60,12 @@ npm run start:stdio
 
 Copy `.env.example` to `.env` if you want to override defaults locally.
 
+## Landing page
+
+`public/index.html` is the page served at `/`, styled by `public/assets/site.css` and `public/assets/site.js`. It follows the Cuprice brand book; `DESIGN.md` records the system and `PRODUCT.md` the product facts it relies on.
+
+The brand font (Degular) is licensed to Cuprice and is not in this repository. `public/fonts/` is git-ignored: without it the page falls back to system fonts. For a production build, copy these files from the Cuprice app (`public/fonts/cuprice/`) into `public/fonts/` first: `DegularDisplay-Regular.otf`, `DegularDisplay-Medium.otf`, `Degular-Regular.otf`, `Degular-Medium.otf`, `Degular-Semibold.otf`, `DegularMono-Regular.otf`, `DegularMono-Medium.otf`.
+
 ## Docker
 
 ```bash
@@ -72,10 +78,6 @@ docker compose up --build -d
 npm run dev
 npm test
 ```
-
-## Security notes
-
-`get-receipt` depends on a checkout `sessionId` and a Cuprice `shareId`. Before deploying this server in a new environment, review the upstream `/api/stripe/receipt` behavior and confirm the returned purchase data matches your privacy expectations.
 
 ## Links
 

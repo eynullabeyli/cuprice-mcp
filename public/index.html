@@ -4,37 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Cuprice MCP Server — Manage Pricing Projects from AI Tools</title>
-  <meta name="description" content="Public MCP server for Cuprice. Fetch pricing data, generate embed code, look up Stripe receipts, and get CSS class names — from Cursor, Claude Desktop, and Claude Code.">
-  <meta name="keywords" content="cuprice, mcp, model context protocol, pricing, cursor, claude, ai tools, embed, stripe, saas pricing, pricing widget, ai integration, developer tools">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NF36H66K');</script>
+  <!-- End Google Tag Manager -->
+
+  <title>Cuprice MCP server · Connect your AI tool to your pricing</title>
+  <meta name="description" content="Connect Cursor, Claude Code, Claude Desktop, VS Code or Windsurf to Cuprice. Your assistant reads your published plans, writes the embed code for your framework and styles the widget. One URL, no API key.">
   <meta name="author" content="Cuprice">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#059669">
+  <meta name="theme-color" content="#f0f4f1">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://mcp.cuprice.io">
-  <link rel="dns-prefetch" href="https://cuprice.io">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://app.cuprice.io">
+
+  <link rel="preload" href="/fonts/DegularDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="/fonts/Degular-Regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="/fonts/DegularMono-Regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Cuprice MCP Server — Manage Pricing from AI Tools">
-  <meta property="og:description" content="Public API tools for integrating Cuprice pricing widgets from Cursor, Claude Desktop, and Claude Code. Fetch pricing data, generate embed code, and more.">
+  <meta property="og:title" content="Cuprice MCP server">
+  <meta property="og:description" content="Connect your AI coding tool to Cuprice. It reads your published plans and writes the embed code for your framework. One URL, no API key.">
   <meta property="og:url" content="https://mcp.cuprice.io">
   <meta property="og:site_name" content="Cuprice">
   <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://mcp.cuprice.io/logo.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="Cuprice logo">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Cuprice MCP Server — Manage Pricing from AI Tools">
-  <meta name="twitter:description" content="Public API tools for integrating Cuprice pricing widgets from Cursor, Claude Desktop, and Claude Code.">
+  <meta name="twitter:title" content="Cuprice MCP server">
+  <meta name="twitter:description" content="Connect your AI coding tool to Cuprice. One URL, no API key, three read-only tools.">
+  <meta name="twitter:image" content="https://mcp.cuprice.io/logo.png">
+  <meta name="twitter:image:alt" content="Cuprice logo">
+
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Cuprice MCP Server",
-    "description": "MCP server for managing Cuprice pricing projects from AI tools like Cursor, Claude Desktop, and Claude Code.",
+    "description": "Public MCP server that lets AI coding tools read published Cuprice pricing, generate embed code and list the widget's CSS classes.",
     "url": "https://mcp.cuprice.io",
+    "image": "https://mcp.cuprice.io/logo.png",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -45,15 +66,15 @@
     "creator": {
       "@type": "Organization",
       "name": "Cuprice",
-      "url": "https://cuprice.io"
+      "url": "https://cuprice.io",
+      "logo": "https://mcp.cuprice.io/logo.png"
     },
     "softwareVersion": "1.0.0",
     "documentation": "https://docs.cuprice.io/mcp",
     "featureList": [
-      "Fetch pricing plans and features by Share ID",
-      "Generate HTML, Next.js, and React embed code",
-      "Look up Stripe checkout purchase receipts",
-      "Get CSS selectors for widget customization"
+      "Read published pricing plans and features by Share ID",
+      "Generate HTML, Next.js, React and Vue embed code",
+      "List CSS class names for widget customization"
     ],
     "isAccessibleForFree": true
   }
@@ -64,63 +85,593 @@
     "@type": "WebSite",
     "name": "Cuprice MCP Server",
     "url": "https://mcp.cuprice.io",
-    "description": "Public MCP server for integrating Cuprice pricing widgets from AI tools."
+    "description": "Public MCP server for connecting AI coding tools to Cuprice pricing."
   }
   </script>
-
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fafafa; color: #0a0a0a; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-    .container { max-width: 560px; padding: 48px 24px; text-align: center; }
-    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
-    .subtitle { font-size: 15px; color: #6b7280; line-height: 1.6; margin-bottom: 24px; }
-    .endpoint { background: #1e1e1e; color: #e6db74; font-family: "SF Mono", Monaco, monospace; font-size: 13px; padding: 12px 16px; border-radius: 8px; margin-bottom: 24px; }
-    .endpoint span { color: #a6e22e; }
-    .links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
-    .links a { font-size: 13px; font-weight: 500; color: #059669; text-decoration: none; padding: 8px 16px; border: 1px solid #d1d5db; border-radius: 6px; transition: all 0.15s; }
-    .links a:hover { background: #059669; color: white; border-color: #059669; }
-    .badge { display: inline-block; font-size: 11px; font-weight: 600; color: #059669; background: #e8f5ee; padding: 2px 8px; border-radius: 99px; margin-bottom: 16px; }
-    .tools { text-align: left; margin: 0 auto; max-width: 420px; }
-    .tools h2 { font-size: 13px; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; text-align: center; }
-    .tools ul { list-style: none; }
-    .tools li { font-size: 13px; padding: 6px 0; border-bottom: 1px solid #f3f4f6; display: flex; justify-content: space-between; }
-    .tools li:last-child { border: none; }
-    .tools code { font-family: "SF Mono", Monaco, monospace; font-size: 12px; color: #0a0a0a; font-weight: 600; }
-    .tools span { color: #9ca3af; font-size: 12px; }
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-  </style>
+  <script src="/assets/site.js" defer></script>
 </head>
 <body>
-  <main class="container">
-    <div class="badge" aria-label="Version 1.0.0">v1.0.0</div>
-    <h1>Cuprice MCP Server</h1>
-    <p class="subtitle">Public API tools for integrating Cuprice pricing widgets from Cursor, Claude Desktop, and Claude Code.</p>
-    <div class="endpoint" role="status"><span>POST</span> /mcp</div>
+<!--
+THESIS: A reference that connects you before you finish reading it. Refuses the centered developer hero with a stats strip and a three-up feature grid.
+OWN-WORLD: Cuprice brand book v1.1. Off-white green page, white hairline cards, green-700 actions, Degular Display at weight 400, Degular Mono for code and numbers, one line-art scene, Cuprice stroke icons. One dark instrument panel for live calls; one green gradient close.
+STORY: You learn what the server gives your assistant, copy one URL, follow the steps for your tool, run a real call, then know what each tool returns.
+FIRST VIEWPORT: Sticky section index left. Main column: headline and lede beside the MCP connection scene, then the server URL at display scale in mono with Copy URL as the primary action, a meta line of real facts, and the tool tabs starting below.
+FORM: Docs reference, candidate 5 of 7, seed f00aeb8d.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NF36H66K"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
-    <nav class="links" aria-label="Quick links">
-      <a href="https://docs.cuprice.io/mcp">Documentation</a>
-      <a href="/llms.txt">llms.txt</a>
-      <a href="/llms-full.txt">llms-full.txt</a>
-      <a href="https://cuprice.io">Cuprice</a>
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="12" height="12" rx="2"/><path d="M15.5 8.5V5a1.5 1.5 0 0 0-1.5-1.5H5A1.5 1.5 0 0 0 3.5 5v9A1.5 1.5 0 0 0 5 15.5h3.5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 13.5V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5.5"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M20.5 3.5 10 14"/><path d="M20.5 3.5 14 20.5l-4-6.5-6.5-4z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="M9 7.5 4.5 12 9 16.5M15 7.5 19.5 12 15 16.5"/></symbol>
+    <symbol id="i-publish" viewBox="0 0 24 24"><path d="M12 15V4M12 4l-4 4M12 4l4 4"/><path d="M4.5 15v3a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="/" aria-label="Cuprice MCP server, home">
+        <img class="brand__logo" src="/brand/cuprice-logo.svg" alt="Cuprice" width="139" height="30">
+        <span class="brand__divider" aria-hidden="true"></span>
+        <span class="brand__product">MCP server</span>
+      </a>
+      <nav class="topnav" aria-label="Site">
+        <a class="topnav__link" href="https://docs.cuprice.io/mcp">Docs</a>
+        <a class="topnav__link" href="https://github.com/eynullabeyli/cuprice-mcp">GitHub</a>
+        <a class="btn btn--secondary btn--sm" href="https://app.cuprice.io">Open Cuprice</a>
+      </nav>
+    </div>
+    <nav class="pagenav" aria-label="On this page, compact">
+      <a href="#connect">Connect</a>
+      <a href="#prompts">Ask</a>
+      <a href="#try">Try it</a>
+      <a href="#tools">Tools</a>
+      <a href="#self-host">Self-host</a>
     </nav>
+  </header>
 
-    <section class="tools" aria-label="Available tools">
-      <h2>4 Public Tools</h2>
-      <ul>
-        <li><code>get-pricing</code> <span>Plans, features &amp; theme by Share ID</span></li>
-        <li><code>get-embed-code</code> <span>HTML / Next.js / React snippet</span></li>
-        <li><code>get-receipt</code> <span>Stripe purchase details</span></li>
-        <li><code>get-css-classes</code> <span>CSS selectors for customization</span></li>
-      </ul>
-    </section>
+  <div class="layout">
+    <aside class="sidebar" aria-label="On this page">
+      <p class="sidebar__title">On this page</p>
+      <ol class="toc">
+        <li><a class="toc__link" href="#top">Overview</a></li>
+        <li>
+          <a class="toc__link" href="#connect">Connect your tool</a>
+          <ol class="toc__sub">
+            <li><a class="toc__link toc__link--sub" href="#cursor">Cursor</a></li>
+            <li><a class="toc__link toc__link--sub" href="#claude-code">Claude Code</a></li>
+            <li><a class="toc__link toc__link--sub" href="#claude-desktop">Claude Desktop</a></li>
+            <li><a class="toc__link toc__link--sub" href="#vs-code">VS Code</a></li>
+            <li><a class="toc__link toc__link--sub" href="#windsurf">Windsurf</a></li>
+          </ol>
+        </li>
+        <li><a class="toc__link" href="#prompts">Ask your assistant</a></li>
+        <li><a class="toc__link" href="#try">Try it live</a></li>
+        <li>
+          <a class="toc__link" href="#tools">Tools</a>
+          <ol class="toc__sub">
+            <li><a class="toc__link toc__link--sub toc__link--mono" href="#get-pricing">get-pricing</a></li>
+            <li><a class="toc__link toc__link--sub toc__link--mono" href="#get-embed-code">get-embed-code</a></li>
+            <li><a class="toc__link toc__link--sub toc__link--mono" href="#get-css-classes">get-css-classes</a></li>
+          </ol>
+        </li>
+        <li><a class="toc__link" href="#self-host">Run it yourself</a></li>
+        <li><a class="toc__link" href="#llms">For AI tools</a></li>
+      </ol>
+    </aside>
 
-    <p class="sr-only">
-      Cuprice MCP Server provides public API tools for integrating Cuprice pricing widgets via Model Context Protocol.
-      Tools: get-pricing (fetch plans and features by Share ID), get-embed-code (generate HTML/Next.js/React snippets),
-      get-receipt (look up Stripe checkout purchases), get-css-classes (CSS selectors for widget customization).
-      Hosted at mcp.cuprice.io/mcp. Documentation at docs.cuprice.io/mcp.
-      Machine-readable at mcp.cuprice.io/llms.txt and mcp.cuprice.io/llms-full.txt.
-    </p>
-  </main>
+    <main id="main" class="main">
+
+      <!-- Overview -->
+      <section id="top" class="hero" aria-labelledby="hero-title" data-spy>
+        <div class="hero__text">
+          <h1 id="hero-title" class="display">Your pricing page, one prompt away</h1>
+          <p class="lede">Connect Cursor, Claude or VS Code to the Cuprice MCP server. Your assistant reads the plans you published in Cuprice and writes the embed code for the framework you already use.</p>
+        </div>
+        <figure class="hero__scene" aria-hidden="true">
+          <svg viewBox="0 0 240 180" fill="none" stroke="#1f2521" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="120" cy="152" rx="86" ry="13" fill="#e9f2ec" stroke="none"/>
+            <rect x="38" y="66" width="56" height="54" rx="10" fill="#ffffff"/>
+            <path d="M66 82 c0.9 4.8 2.6 6.7 7.5 7.6 c-4.9 0.9 -6.6 2.8 -7.5 7.6 c-0.9 -4.8 -2.6 -6.7 -7.5 -7.6 c4.9 -0.9 6.6 -2.8 7.5 -7.6 z" fill="#12a86d" stroke="none"/>
+            <path d="M52 108 h28" stroke-width="2"/>
+            <rect x="146" y="66" width="56" height="54" rx="10" fill="#ffffff"/>
+            <circle cx="167" cy="86" r="3" stroke-width="2"/>
+            <circle cx="181" cy="86" r="3" stroke-width="2"/>
+            <circle cx="167" cy="99" r="3" stroke-width="2"/>
+            <circle cx="181" cy="99" r="3" stroke-width="2"/>
+            <path d="M160 108 h28" stroke-width="2"/>
+            <path d="M94 93 h14" stroke-width="2"/>
+            <circle cx="120" cy="93" r="11" fill="#a8eacc" stroke-width="2"/>
+            <path d="M115 93 h10" stroke-width="2"/>
+            <path d="M131 93 h15" stroke-width="2"/>
+            <circle cx="120" cy="48" r="11" fill="#ffffff" stroke-width="2"/>
+            <path d="M114 48 l4 4 7 -8" stroke="#12a86d" stroke-width="2"/>
+            <path d="M120 60 v14" stroke-width="2" stroke-dasharray="2 4"/>
+            <path d="M24 80 h10 M20 94 h12" stroke-dasharray="1 6"/>
+          </svg>
+        </figure>
+
+        <div class="endpoint">
+          <div class="endpoint__body">
+            <p class="endpoint__label" id="endpoint-label">Server URL</p>
+            <p class="endpoint__url" aria-labelledby="endpoint-label"><span class="endpoint__scheme">https://</span>mcp.cuprice.io/mcp</p>
+          </div>
+          <button class="btn btn--primary btn--lg" type="button" data-copy="https://mcp.cuprice.io/mcp" data-copy-label="Copy URL">
+            <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>
+            <span class="btn__label">Copy URL</span>
+          </button>
+        </div>
+        <ul class="facts" aria-label="Server facts">
+          <li>Streamable HTTP</li>
+          <li>No API key</li>
+          <li>3 read-only tools</li>
+          <li>Open source, MIT</li>
+        </ul>
+      </section>
+
+      <!-- Connect -->
+      <section id="connect" class="section" aria-labelledby="connect-title" data-spy>
+        <h2 id="connect-title" class="section-title">Connect your tool</h2>
+        <p class="section-lede">Pick the tool you work in. The URL is the same everywhere; only where you paste it changes.</p>
+
+        <div class="tabs" data-tabs>
+          <div class="tabs__list" role="tablist" aria-label="AI tools">
+            <button class="tab" role="tab" id="tab-cursor" aria-controls="cursor" aria-selected="true" tabindex="0" type="button">Cursor</button>
+            <button class="tab" role="tab" id="tab-claude-code" aria-controls="claude-code" aria-selected="false" tabindex="-1" type="button">Claude Code</button>
+            <button class="tab" role="tab" id="tab-claude-desktop" aria-controls="claude-desktop" aria-selected="false" tabindex="-1" type="button">Claude Desktop</button>
+            <button class="tab" role="tab" id="tab-vs-code" aria-controls="vs-code" aria-selected="false" tabindex="-1" type="button">VS Code</button>
+            <button class="tab" role="tab" id="tab-windsurf" aria-controls="windsurf" aria-selected="false" tabindex="-1" type="button">Windsurf</button>
+          </div>
+
+          <!-- Cursor -->
+          <div class="tabpanel" role="tabpanel" id="cursor" aria-labelledby="tab-cursor" tabindex="0">
+            <ol class="steps">
+              <li class="step">
+                <p>Install it in one click. Cursor opens and asks you to confirm.</p>
+                <a class="btn btn--primary" href="cursor://anysphere.cursor-deeplink/mcp/install?name=cuprice&amp;config=eyJ1cmwiOiJodHRwczovL21jcC5jdXByaWNlLmlvL21jcCJ9">
+                  <svg class="icon" aria-hidden="true"><use href="#i-publish"/></svg>
+                  Add to Cursor
+                </a>
+              </li>
+              <li class="step">
+                <p>Or add it by hand: create <code class="inline">.cursor/mcp.json</code> in your project, or <code class="inline">~/.cursor/mcp.json</code> to use it in every project.</p>
+                <figure class="code">
+                  <figcaption class="code__bar">
+                    <span class="code__file">.cursor/mcp.json</span>
+                    <button class="code__copy" type="button" data-copy-target="code-cursor" data-copy-label="Copy">
+                      <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="btn__label">Copy</span>
+                    </button>
+                  </figcaption>
+<pre id="code-cursor" data-lang="json">{
+  "mcpServers": {
+    "cuprice": {
+      "url": "https://mcp.cuprice.io/mcp"
+    }
+  }
+}</pre>
+                </figure>
+              </li>
+              <li class="step">
+                <p>Open Cursor Settings and find <strong>cuprice</strong> in the MCP list. Its three tools show there once it connects.</p>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Claude Code -->
+          <div class="tabpanel" role="tabpanel" id="claude-code" aria-labelledby="tab-claude-code" tabindex="0" hidden>
+            <ol class="steps">
+              <li class="step">
+                <p>Run this in your project folder.</p>
+                <figure class="code">
+                  <figcaption class="code__bar">
+                    <span class="code__file">Terminal</span>
+                    <button class="code__copy" type="button" data-copy-target="code-claude-code" data-copy-label="Copy">
+                      <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="btn__label">Copy</span>
+                    </button>
+                  </figcaption>
+<pre id="code-claude-code" data-lang="bash">claude mcp add --transport http \
+  cuprice https://mcp.cuprice.io/mcp</pre>
+                </figure>
+              </li>
+              <li class="step">
+                <p>Add <code class="inline">--scope user</code> before <code class="inline">cuprice</code> to use it in every project.</p>
+              </li>
+              <li class="step">
+                <p>Start Claude Code and type <code class="inline">/mcp</code> to check that cuprice is connected.</p>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Claude Desktop -->
+          <div class="tabpanel" role="tabpanel" id="claude-desktop" aria-labelledby="tab-claude-desktop" tabindex="0" hidden>
+            <ol class="steps">
+              <li class="step">
+                <p>Open <strong>Settings</strong>, then <strong>Connectors</strong>, and choose <strong>Add custom connector</strong>.</p>
+              </li>
+              <li class="step">
+                <p>Name it Cuprice and paste the server URL.</p>
+                <div class="pill-copy">
+                  <code>https://mcp.cuprice.io/mcp</code>
+                  <button class="code__copy" type="button" data-copy="https://mcp.cuprice.io/mcp" data-copy-label="Copy" aria-label="Copy server URL">
+                    <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="btn__label">Copy</span>
+                  </button>
+                </div>
+              </li>
+              <li class="step">
+                <p>No custom connectors on your account? Add it to <code class="inline">claude_desktop_config.json</code> through mcp-remote instead. It needs Node.js.</p>
+                <figure class="code">
+                  <figcaption class="code__bar">
+                    <span class="code__file">claude_desktop_config.json</span>
+                    <button class="code__copy" type="button" data-copy-target="code-claude-desktop" data-copy-label="Copy">
+                      <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="btn__label">Copy</span>
+                    </button>
+                  </figcaption>
+<pre id="code-claude-desktop" data-lang="json">{
+  "mcpServers": {
+    "cuprice": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.cuprice.io/mcp"
+      ]
+    }
+  }
+}</pre>
+                </figure>
+              </li>
+            </ol>
+          </div>
+
+          <!-- VS Code -->
+          <div class="tabpanel" role="tabpanel" id="vs-code" aria-labelledby="tab-vs-code" tabindex="0" hidden>
+            <ol class="steps">
+              <li class="step">
+                <p>Install it in one click. VS Code opens and asks you to confirm.</p>
+                <a class="btn btn--primary" href="vscode:mcp/install?%7B%22name%22%3A%22cuprice%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.cuprice.io%2Fmcp%22%7D">
+                  <svg class="icon" aria-hidden="true"><use href="#i-publish"/></svg>
+                  Add to VS Code
+                </a>
+              </li>
+              <li class="step">
+                <p>Or create <code class="inline">.vscode/mcp.json</code> in your project.</p>
+                <figure class="code">
+                  <figcaption class="code__bar">
+                    <span class="code__file">.vscode/mcp.json</span>
+                    <button class="code__copy" type="button" data-copy-target="code-vs-code" data-copy-label="Copy">
+                      <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="btn__label">Copy</span>
+                    </button>
+                  </figcaption>
+<pre id="code-vs-code" data-lang="json">{
+  "servers": {
+    "cuprice": {
+      "type": "http",
+      "url": "https://mcp.cuprice.io/mcp"
+    }
+  }
+}</pre>
+                </figure>
+              </li>
+              <li class="step">
+                <p>Open Copilot Chat in agent mode. The Cuprice tools appear in the tools picker.</p>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Windsurf -->
+          <div class="tabpanel" role="tabpanel" id="windsurf" aria-labelledby="tab-windsurf" tabindex="0" hidden>
+            <ol class="steps">
+              <li class="step">
+                <p>Open <code class="inline">~/.codeium/<wbr>windsurf/<wbr>mcp_config.json</code> and add the server.</p>
+                <figure class="code">
+                  <figcaption class="code__bar">
+                    <span class="code__file">mcp_config.json</span>
+                    <button class="code__copy" type="button" data-copy-target="code-windsurf" data-copy-label="Copy">
+                      <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="btn__label">Copy</span>
+                    </button>
+                  </figcaption>
+<pre id="code-windsurf" data-lang="json">{
+  "mcpServers": {
+    "cuprice": {
+      "serverUrl": "https://mcp.cuprice.io/mcp"
+    }
+  }
+}</pre>
+                </figure>
+              </li>
+              <li class="step">
+                <p>Refresh the MCP servers in Cascade. cuprice and its three tools appear in the list.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <aside class="note">
+          <svg class="icon note__icon" aria-hidden="true"><use href="#i-info"/></svg>
+          <p>Every tool works from a <strong>Share ID</strong>. Publish a project in <a href="https://app.cuprice.io">Cuprice</a> and the share link ends with it: <code class="inline">app.cuprice.io/<wbr>share/<wbr><span class="var">your-share-id</span></code>.</p>
+        </aside>
+      </section>
+
+      <!-- Prompts -->
+      <section id="prompts" class="section" aria-labelledby="prompts-title" data-spy>
+        <h2 id="prompts-title" class="section-title">Then ask your assistant</h2>
+        <p class="section-lede">Write it the way you would ask a colleague. Your assistant picks the tool and fills in the arguments.</p>
+
+        <ul class="prompts">
+          <li class="prompt">
+            <p class="prompt__text" id="prompt-1">Add my Cuprice pricing table to <span class="mono">app/pricing/page.tsx</span>. The Share ID is <span class="mono var">your-share-id</span>.</p>
+            <div class="prompt__meta">
+              <span class="chip">get-embed-code</span>
+              <button class="code__copy" type="button" data-copy-target="prompt-1" data-copy-label="Copy">
+                <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="btn__label">Copy</span>
+              </button>
+            </div>
+          </li>
+          <li class="prompt">
+            <p class="prompt__text" id="prompt-2">List my Cuprice plans with their monthly prices and the features in each one. Share ID <span class="mono var">your-share-id</span>.</p>
+            <div class="prompt__meta">
+              <span class="chip">get-pricing</span>
+              <button class="code__copy" type="button" data-copy-target="prompt-2" data-copy-label="Copy">
+                <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="btn__label">Copy</span>
+              </button>
+            </div>
+          </li>
+          <li class="prompt">
+            <p class="prompt__text" id="prompt-3">Style the Cuprice plan cards to match our site: 16px corners, our brand font, and our primary color on the buttons.</p>
+            <div class="prompt__meta">
+              <span class="chip">get-css-classes</span>
+              <button class="code__copy" type="button" data-copy-target="prompt-3" data-copy-label="Copy">
+                <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="btn__label">Copy</span>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Playground -->
+      <section id="try" class="section" aria-labelledby="try-title" data-spy>
+        <h2 id="try-title" class="section-title">Try it live</h2>
+        <p class="section-lede">This panel sends the same JSON-RPC request your assistant sends, to the same server, and shows what comes back.</p>
+
+        <div class="console" data-console>
+          <div class="console__tools" role="radiogroup" aria-label="Call">
+            <button class="ctool" type="button" role="radio" aria-checked="true" data-tool="tools/list">tools/list</button>
+            <button class="ctool" type="button" role="radio" aria-checked="false" data-tool="get-pricing">get-pricing</button>
+            <button class="ctool" type="button" role="radio" aria-checked="false" data-tool="get-embed-code">get-embed-code</button>
+            <button class="ctool" type="button" role="radio" aria-checked="false" data-tool="get-css-classes">get-css-classes</button>
+          </div>
+
+          <form class="console__args" data-console-form novalidate>
+            <p class="console__hint" data-hint>Lists the tools this server gives your assistant. No input needed.</p>
+            <div class="field" data-arg="shareId" hidden>
+              <label class="field__label" for="arg-share">Share ID</label>
+              <input class="field__input" id="arg-share" name="shareId" type="text" autocomplete="off" spellcheck="false" placeholder="your-share-id">
+            </div>
+            <fieldset class="field" data-arg="framework" hidden>
+              <legend class="field__label">Framework</legend>
+              <div class="seg">
+                <label><input type="radio" name="framework" value="html" checked><span>html</span></label>
+                <label><input type="radio" name="framework" value="nextjs"><span>nextjs</span></label>
+                <label><input type="radio" name="framework" value="react"><span>react</span></label>
+                <label><input type="radio" name="framework" value="vue"><span>vue</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="field" data-arg="widget" hidden>
+              <legend class="field__label">Widget</legend>
+              <div class="seg">
+                <label><input type="radio" name="widget" value="pricing" checked><span>pricing</span></label>
+                <label><input type="radio" name="widget" value="billing"><span>billing</span></label>
+              </div>
+            </fieldset>
+            <button class="btn btn--run" type="submit" data-run>
+              <svg class="icon" aria-hidden="true"><use href="#i-send"/></svg>
+              <span class="btn__label">Run call</span>
+            </button>
+          </form>
+
+          <div class="console__panes">
+            <div class="pane pane--request" data-request-pane>
+              <div class="pane__bar">
+                <span class="pane__title">Request</span>
+                <span class="pane__meta">POST /mcp</span>
+                <button class="pane__copy" type="button" data-copy-curl data-copy-label="Copy as curl">
+                  <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="btn__label">Copy as curl</span>
+                </button>
+              </div>
+<pre class="pane__body" data-lang="json" data-request>{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "tools/list"
+}</pre>
+            </div>
+            <div class="pane pane--response" data-response-pane>
+              <div class="pane__bar">
+                <span class="pane__title">Response</span>
+                <dl class="readout" data-readout hidden>
+                  <div><dt>Status</dt><dd data-r-status></dd></div>
+                  <div><dt>Result</dt><dd data-r-result></dd></div>
+                  <div><dt>Time</dt><dd data-r-time></dd></div>
+                  <div><dt>Size</dt><dd data-r-size></dd></div>
+                </dl>
+              </div>
+              <div class="pane__body pane__body--response" data-response aria-live="polite">
+                <p class="pane__empty">Run a call to see the server's answer here.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tools -->
+      <section id="tools" class="section" aria-labelledby="tools-title" data-spy>
+        <h2 id="tools-title" class="section-title">Three tools, all read-only</h2>
+        <p class="section-lede">They read what your published page already shows. Creating and editing projects, plans and features is the <a href="https://docs.cuprice.io/api-reference/overview">REST API</a>, with an API key.</p>
+
+        <article id="get-pricing" class="tool">
+          <header class="tool__head">
+            <h3 class="tool__name">get-pricing</h3>
+            <a class="tool__try" href="#try-get-pricing">Run it <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          </header>
+          <p class="tool__desc">Returns your published project: name, description, currency, annual discount, every plan with its features and limits, and the theme settings.</p>
+          <table class="params">
+            <caption class="visually-hidden">get-pricing inputs</caption>
+            <thead><tr><th scope="col">Input</th><th scope="col">Type</th><th scope="col">Description</th></tr></thead>
+            <tbody>
+              <tr><td><code>shareId</code></td><td>string, required</td><td>The project's Share ID</td></tr>
+            </tbody>
+          </table>
+          <p class="tool__foot">Reads <code class="inline">GET app.cuprice.io/<wbr>api/<wbr>share/<wbr>{shareId}</code>. An unknown Share ID comes back as a tool error with the API's message, so your assistant can tell you what went wrong.</p>
+        </article>
+
+        <article id="get-embed-code" class="tool">
+          <header class="tool__head">
+            <h3 class="tool__name">get-embed-code</h3>
+            <a class="tool__try" href="#try-get-embed-code">Run it <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          </header>
+          <p class="tool__desc">Writes the snippet that puts your pricing table or billing widget on a page, for the framework your project uses.</p>
+          <table class="params">
+            <caption class="visually-hidden">get-embed-code inputs</caption>
+            <thead><tr><th scope="col">Input</th><th scope="col">Type</th><th scope="col">Description</th></tr></thead>
+            <tbody>
+              <tr><td><code>shareId</code></td><td>string, required</td><td>The project's Share ID</td></tr>
+              <tr><td><code>framework</code></td><td><code>html</code> <code>nextjs</code> <code>react</code> <code>vue</code></td><td>Optional, <code>html</code> by default</td></tr>
+              <tr><td><code>widget</code></td><td><code>pricing</code> <code>billing</code></td><td>Optional, <code>pricing</code> by default</td></tr>
+            </tbody>
+          </table>
+          <figure class="code">
+            <figcaption class="code__bar">
+              <span class="code__file">Returns, for html and pricing</span>
+              <button class="code__copy" type="button" data-copy-target="code-embed" data-copy-label="Copy">
+                <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="btn__label">Copy</span>
+              </button>
+            </figcaption>
+<pre id="code-embed" data-lang="html">&lt;!-- Pricing widget --&gt;
+&lt;div data-cuprice-id="your-share-id"&gt;&lt;/div&gt;
+&lt;script src="https://app.cuprice.io/embed.js" async&gt;&lt;/script&gt;</pre>
+          </figure>
+        </article>
+
+        <article id="get-css-classes" class="tool">
+          <header class="tool__head">
+            <h3 class="tool__name">get-css-classes</h3>
+            <a class="tool__try" href="#try-get-css-classes">Run it <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          </header>
+          <p class="tool__desc">Lists the class names on the widget, so your assistant can style it from your own stylesheet. No input.</p>
+          <table class="params params--classes">
+            <caption class="visually-hidden">Widget CSS classes</caption>
+            <thead><tr><th scope="col">Class</th><th scope="col">What it styles</th></tr></thead>
+            <tbody>
+              <tr><td><code>.cuprice-pricing-card</code></td><td>Each plan card</td></tr>
+              <tr><td><code>.cuprice-pricing-button</code></td><td>"Choose Plan" buttons</td></tr>
+              <tr><td><code>.cuprice-pricing-badge</code></td><td>"Most Popular" badge</td></tr>
+              <tr><td><code>.cuprice-billing-toggle</code></td><td>Monthly and annual toggle</td></tr>
+              <tr><td><code>.cuprice-pricing-header</code></td><td>Page title and description</td></tr>
+              <tr><td><code>.cuprice-custom-plan-card</code></td><td>Custom plan card</td></tr>
+              <tr><td><code>.cuprice-custom-plan-button</code></td><td>"Create Now" button</td></tr>
+              <tr><td><code>.cuprice-custom-plan-badge</code></td><td>"Custom" badge</td></tr>
+              <tr><td><code>.cuprice-custom-plan-title</code></td><td>Custom card title</td></tr>
+              <tr><td><code>.cuprice-custom-plan-feature-text</code></td><td>Feature bullet text</td></tr>
+              <tr><td><code>.cuprice-custom-plan-feature-icon</code></td><td>Feature checkmark icon</td></tr>
+              <tr><td><code>.cuprice-comparison-table</code></td><td>Feature comparison table</td></tr>
+              <tr><td><code>.cuprice-powered-by</code></td><td>"Powered by Cuprice" footer</td></tr>
+            </tbody>
+          </table>
+          <p class="tool__foot">The widget scopes its own styles, so mark your overrides <code class="inline">!important</code>.</p>
+        </article>
+      </section>
+
+      <!-- Self-host -->
+      <section id="self-host" class="section" aria-labelledby="self-host-title" data-spy>
+        <h2 id="self-host-title" class="section-title">Run it yourself</h2>
+        <p class="section-lede">The server is open source. Run it next to your own stack, or over stdio for a local tool.</p>
+
+        <div class="split">
+          <figure class="code">
+            <figcaption class="code__bar">
+              <span class="code__file">Terminal</span>
+              <button class="code__copy" type="button" data-copy-target="code-self-host" data-copy-label="Copy">
+                <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="btn__label">Copy</span>
+              </button>
+            </figcaption>
+<pre id="code-self-host" data-lang="bash">git clone https://github.com/eynullabeyli/cuprice-mcp.git
+cd cuprice-mcp
+npm install
+npm run build
+npm start              # HTTP on :5000, POST /mcp
+npm run start:stdio    # or stdio</pre>
+          </figure>
+          <div class="split__side">
+            <table class="params">
+              <caption class="params__caption">Environment</caption>
+              <thead><tr><th scope="col">Variable</th><th scope="col">Default</th><th scope="col">What it sets</th></tr></thead>
+              <tbody>
+                <tr><td><code>PORT</code></td><td><code>5000</code></td><td>Port for the HTTP server</td></tr>
+                <tr><td><code>CUPRICE_BASE</code></td><td><code>https://app.cuprice.io</code></td><td>Where the Cuprice API and embed.js live</td></tr>
+              </tbody>
+            </table>
+            <div class="split__row">
+              <p class="split__note">With Docker: <code class="inline">docker compose up --build -d</code></p>
+              <a class="btn btn--secondary" href="https://github.com/eynullabeyli/cuprice-mcp">
+                <svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- For AI tools -->
+      <section id="llms" class="section" aria-labelledby="llms-title" data-spy>
+        <h2 id="llms-title" class="section-title">For AI tools reading this page</h2>
+        <p class="section-lede">Plain-text versions of everything here, kept next to the server.</p>
+        <ul class="links">
+          <li><a class="links__item" href="/llms.txt"><span class="links__path">/llms.txt</span><span class="links__desc">Short index of the tools and docs</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></li>
+          <li><a class="links__item" href="/llms-full.txt"><span class="links__path">/llms-full.txt</span><span class="links__desc">Full reference, tools and REST API</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></li>
+          <li><a class="links__item" href="/mcp"><span class="links__path">GET /mcp</span><span class="links__desc">Server name, version and tool list as JSON</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></li>
+          <li><a class="links__item" href="https://docs.cuprice.io/mcp"><span class="links__path">docs.cuprice.io/mcp</span><span class="links__desc">The MCP page in the Cuprice docs</span><svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+        </ul>
+      </section>
+
+      <!-- Close -->
+      <section class="close" aria-labelledby="close-title">
+        <h2 id="close-title" class="close__title">Connect once. Then just ask.</h2>
+        <p class="close__text">No Share ID yet? Build your pricing in Cuprice and publish it. The link it gives you is all your assistant needs.</p>
+        <div class="close__actions">
+          <button class="btn btn--on-green btn--lg" type="button" data-copy="https://mcp.cuprice.io/mcp" data-copy-label="Copy server URL">
+            <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>
+            <span class="btn__label">Copy server URL</span>
+          </button>
+          <a class="btn btn--ghost-on-green btn--lg" href="https://app.cuprice.io">Open Cuprice</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <a class="footer__brand" href="https://cuprice.io">
+        <img src="/brand/cuprice-logo.svg" alt="Cuprice" width="111" height="24">
+      </a>
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="https://cuprice.io">cuprice.io</a>
+        <a href="https://docs.cuprice.io/mcp">Docs</a>
+        <a href="https://github.com/eynullabeyli/cuprice-mcp">GitHub</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/healthz">Status</a>
+      </nav>
+      <p class="footer__legal">MIT licensed. Part of Cuprice.</p>
+    </div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
 </body>
 </html>

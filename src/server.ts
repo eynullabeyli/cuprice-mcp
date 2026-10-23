@@ -11,7 +11,7 @@ const PUBLIC_DIR = path.resolve(__dirname, "..", "..", "public");
 const TOOLS_INFO = [
   { name: "get-pricing", description: "Get public pricing data (plans, features, theme) by Share ID" },
   { name: "get-embed-code", description: "Get embed snippet for HTML, Next.js, React, or Vue" },
-  { name: "get-receipt", description: "Get Stripe purchase details from a checkout session" },
+  { name: "get-receipt", description: "[Deprecated] Stripe checkout receipts are no longer available" },
   { name: "get-css-classes", description: "Get CSS class names for widget customization" },
 ];
 
