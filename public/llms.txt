@@ -4,9 +4,9 @@
 
 ## Tools
 
-- [get-pricing](https://docs.cuprice.io/mcp#get-pricing): Get public pricing data (plans, features, theme) by Share ID
-- [get-embed-code](https://docs.cuprice.io/mcp#get-embed-code): Get embed snippet for HTML, Next.js, React, or Vue (pricing or billing widget)
-- [get-css-classes](https://docs.cuprice.io/mcp#get-css-classes): Get CSS class names for widget customization
+- [get-pricing](https://mcp.cuprice.io/#get-pricing): Get public pricing data (plans, features, theme) by Share ID
+- [get-embed-code](https://mcp.cuprice.io/#get-embed-code): Get embed snippet for HTML, Next.js, React, or Vue (pricing or billing widget)
+- [get-css-classes](https://mcp.cuprice.io/#get-css-classes): Get CSS class names for widget customization
 
 `get-receipt` is deprecated: Stripe checkout was removed, and it now only returns a deprecation notice.
 
@@ -25,6 +25,7 @@ For full CRUD operations, use the REST API with an API key (`Authorization: Bear
 
 ## Resources
 
-- [Documentation](https://docs.cuprice.io/mcp)
+- [Documentation](https://docs.cuprice.io)
+- Docs search MCP server: `https://docs.cuprice.io/mcp` (a separate MCP server with a docs search tool)
 - [Full Reference](https://mcp.cuprice.io/llms-full.txt)
 - [Cuprice Docs](https://docs.cuprice.io/llms.txt)
