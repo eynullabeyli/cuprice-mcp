@@ -1,0 +1,718 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-23T20:06:34.025373+00:00",
+  "title": "Design System: Cuprice MCP server",
+  "extensions": {
+    "colorMeta": {
+      "green-900": {
+        "role": "primary",
+        "displayName": "Forest Depth",
+        "canonical": "#033d26",
+        "tonalRamp": [
+          "#033d26",
+          "#055534",
+          "#076c45",
+          "#0a8f5c",
+          "#34c88a",
+          "#a8eacc",
+          "#d4f5e6",
+          "#ecfaf2"
+        ]
+      },
+      "green-800": {
+        "role": "primary",
+        "displayName": "Deep Action Green",
+        "canonical": "#055534",
+        "tonalRamp": [
+          "#033d26",
+          "#055534",
+          "#076c45",
+          "#0a8f5c",
+          "#34c88a",
+          "#a8eacc",
+          "#d4f5e6",
+          "#ecfaf2"
+        ]
+      },
+      "green-700": {
+        "role": "primary",
+        "displayName": "Cuprice Action Green",
+        "canonical": "#076c45",
+        "tonalRamp": [
+          "#033d26",
+          "#055534",
+          "#076c45",
+          "#0a8f5c",
+          "#34c88a",
+          "#a8eacc",
+          "#d4f5e6",
+          "#ecfaf2"
+        ]
+      },
+      "green-600": {
+        "role": "primary",
+        "displayName": "Signal Green",
+        "canonical": "#0a8f5c",
+        "tonalRamp": [
+          "#033d26",
+          "#055534",
+          "#076c45",
+          "#0a8f5c",
+          "#34c88a",
+          "#a8eacc",
+          "#d4f5e6",
+          "#ecfaf2"
+        ]
+      },
+      "green-500": {
+        "role": "primary",
+        "displayName": "Leaf Dot",
+        "canonical": "#12a86d",
+        "tonalRamp": [
+          "#033d26",
+          "#055534",
+          "#076c45",
+          "#0a8f5c",
+          "#34c88a",
+          "#a8eacc",
+          "#d4f5e6",
+          "#ecfaf2"
+        ]
+      },
+      "green-400": {
+        "role": "primary",
+        "displayName": "Console Wire Green",
+        "canonical": "#34c88a",
+        "tonalRamp": [
+          "#033d26",
+          "#055534",
+          "#076c45",
+          "#0a8f5c",
+          "#34c88a",
+          "#a8eacc",
+          "#d4f5e6",
+          "#ecfaf2"
+        ]
+      },
+      "green-300": {
+        "role": "primary",
+        "displayName": "Console String Mint",
+        "canonical": "#6edaaa",
+        "tonalRamp": [
+          "#033d26",
+          "#055534",
+          "#076c45",
+          "#0a8f5c",
+          "#34c88a",
+          "#a8eacc",
+          "#d4f5e6",
+          "#ecfaf2"
+        ]
+      },
+      "green-200": {
+        "role": "primary",
+        "displayName": "Console Number Mint",
+        "canonical": "#a8eacc",
+        "tonalRamp": [
+          "#033d26",
+          "#055534",
+          "#076c45",
+          "#0a8f5c",
+          "#34c88a",
+          "#a8eacc",
+          "#d4f5e6",
+          "#ecfaf2"
+        ]
+      },
+      "green-100": {
+        "role": "primary",
+        "displayName": "Selection Mint",
+        "canonical": "#d4f5e6",
+        "tonalRamp": [
+          "#033d26",
+          "#055534",
+          "#076c45",
+          "#0a8f5c",
+          "#34c88a",
+          "#a8eacc",
+          "#d4f5e6",
+          "#ecfaf2"
+        ]
+      },
+      "green-50": {
+        "role": "primary",
+        "displayName": "Mint Wash",
+        "canonical": "#ecfaf2",
+        "tonalRamp": [
+          "#033d26",
+          "#055534",
+          "#076c45",
+          "#0a8f5c",
+          "#34c88a",
+          "#a8eacc",
+          "#d4f5e6",
+          "#ecfaf2"
+        ]
+      },
+      "neutral-900": {
+        "role": "neutral",
+        "displayName": "Pane Charcoal",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "neutral-800": {
+        "role": "neutral",
+        "displayName": "Selected Tool Charcoal",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "neutral-700": {
+        "role": "neutral",
+        "displayName": "Console Border",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "neutral-600": {
+        "role": "neutral",
+        "displayName": "Console Border Hover",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "neutral-300": {
+        "role": "neutral",
+        "displayName": "Secondary Edge",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "neutral-200": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "neutral-100": {
+        "role": "neutral",
+        "displayName": "Row Divider",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "bg-page": {
+        "role": "neutral",
+        "displayName": "Green Mist Page",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "bg-surface": {
+        "role": "neutral",
+        "displayName": "Surface White",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "bg-elevated": {
+        "role": "neutral",
+        "displayName": "Elevated Wash",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "bg-muted": {
+        "role": "neutral",
+        "displayName": "Muted Sage",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "bg-dark": {
+        "role": "neutral",
+        "displayName": "Instrument Black",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "fg-1": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "fg-2": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "fg-3": {
+        "role": "neutral",
+        "displayName": "Moss Grey",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "fg-4": {
+        "role": "neutral",
+        "displayName": "Faint Moss",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "fg-on-dark": {
+        "role": "neutral",
+        "displayName": "Ink on Dark",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "fg-on-dark-2": {
+        "role": "neutral",
+        "displayName": "Secondary on Dark",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "fg-on-dark-3": {
+        "role": "neutral",
+        "displayName": "Tertiary on Dark",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "line-on-dark": {
+        "role": "neutral",
+        "displayName": "Line on Dark",
+        "tonalRamp": [
+          "#0a0e0c",
+          "#151a17",
+          "#3a4240",
+          "#566058",
+          "#9ca49c",
+          "#dce2dc",
+          "#ecf0ec",
+          "#f4f7f5"
+        ]
+      },
+      "loss-on-dark": {
+        "role": "error",
+        "displayName": "Loss Coral (console errors only)",
+        "tonalRamp": [
+          "#5a1a10",
+          "#8a2a1a",
+          "#b03a24",
+          "#d44830",
+          "#e8674f",
+          "#f08f7c",
+          "#f6b8aa",
+          "#fbe0da"
+        ]
+      },
+      "gradient-close": {
+        "role": "primary",
+        "displayName": "Deep Gradient (closing card only)",
+        "canonical": "linear-gradient(135deg, #033d26 0%, #076c45 60%, #0a8f5c 100%)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The one page headline; Degular Display 400, tracking 0."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles and the close title."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Hero lede; section ledes at 17px fg-3."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose, steps, tool descriptions."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field labels, table heads, sidebar title; sentence case, no tracking."
+      },
+      "mono-display": {
+        "displayName": "Mono display",
+        "purpose": "The server URL in the endpoint card."
+      },
+      "mono-title": {
+        "displayName": "Mono title",
+        "purpose": "Tool names in the reference."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Code blocks; 13.5px in console panes, 12px/11px on small phones."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-sm",
+        "value": "0 1px 2px rgba(10, 14, 12, 0.05)",
+        "purpose": "Rest: cards, tab panels, selected tab."
+      },
+      {
+        "name": "shadow-md",
+        "value": "0 2px 6px -1px rgba(10, 14, 12, 0.07), 0 4px 12px -2px rgba(10, 14, 12, 0.05)",
+        "purpose": "Raised: endpoint card; Run call hover."
+      },
+      {
+        "name": "shadow-lg",
+        "value": "0 4px 12px -2px rgba(10, 14, 12, 0.08), 0 8px 24px -4px rgba(10, 14, 12, 0.06)",
+        "purpose": "Floating: dark console, toast."
+      },
+      {
+        "name": "console-ring",
+        "value": "inset 0 0 0 1px rgba(52, 200, 138, 0.45)",
+        "purpose": "State inside the console (selected tool, in-flight pane, landed response). Never an outer glow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All transitions."
+      },
+      {
+        "name": "hover",
+        "value": "150ms",
+        "purpose": "Colour, background, border, shadow on hover."
+      },
+      {
+        "name": "panel-in",
+        "value": "220ms opacity 0.4 to 1",
+        "purpose": "Tab panel change."
+      },
+      {
+        "name": "wire",
+        "value": "900ms infinite scaleX sweep, 2px green-400 line",
+        "purpose": "Request pane while a call is in flight; the one authored moment."
+      },
+      {
+        "name": "land",
+        "value": "900ms inset ring fade",
+        "purpose": "Response pane when the answer arrives."
+      },
+      {
+        "name": "reveal",
+        "value": "360ms opacity + 2px blur",
+        "purpose": "Response content appearing."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "prefers-reduced-motion collapses all motion; the wire is hidden."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow-desktop",
+        "value": "1120px"
+      },
+      {
+        "name": "tablet",
+        "value": "980px"
+      },
+      {
+        "name": "phone",
+        "value": "720px"
+      },
+      {
+        "name": "small-phone",
+        "value": "374px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Green-700 fill, one per view for the main job (Copy URL, Add to Cursor, Run call).",
+      "html": "<button class=\"ds-btn-primary\"><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"8.5\" y=\"8.5\" width=\"12\" height=\"12\" rx=\"2\"/><path d=\"M15.5 8.5V5a1.5 1.5 0 0 0-1.5-1.5H5A1.5 1.5 0 0 0 3.5 5v9A1.5 1.5 0 0 0 5 15.5h3.5\"/></svg>Copy URL</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 20px;border:1px solid transparent;border-radius:16px;background:#076c45;color:#fff;font:500 16px/1 var(--font-body, 'Degular', -apple-system, sans-serif);cursor:pointer;transition:background-color 150ms cubic-bezier(0.16,1,0.3,1)}.ds-btn-primary:hover{background:#055534}.ds-btn-primary:focus-visible{outline:2px solid #0a8f5c;outline-offset:2px}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "White with neutral-300 edge; hovers to mint.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Open Cuprice</a>",
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;min-height:36px;padding:7px 14px;border:1px solid #c0c8c0;border-radius:16px;background:#fff;color:#0a0e0c;font:500 14px/1 var(--font-body, 'Degular', -apple-system, sans-serif);text-decoration:none;transition:background-color 150ms cubic-bezier(0.16,1,0.3,1),border-color 150ms,color 150ms}.ds-btn-secondary:hover{background:#ecfaf2;border-color:#0a8f5c;color:#055534}.ds-btn-secondary:focus-visible{outline:2px solid #0a8f5c;outline-offset:2px}"
+    },
+    {
+      "name": "Segmented Tabs",
+      "kind": "nav",
+      "refersTo": "tab-selected",
+      "description": "Pill track on bg-muted; selected tab is white with a hairline ring.",
+      "html": "<div class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-tab\" aria-selected=\"true\">Cursor</button><button class=\"ds-tab\" aria-selected=\"false\">Claude Code</button><button class=\"ds-tab\" aria-selected=\"false\">VS Code</button></div>",
+      "css": ".ds-tabs{display:inline-flex;gap:2px;padding:4px;background:#e4ebe6;border-radius:9999px}.ds-tab{padding:9px 18px;border:0;border-radius:9999px;background:transparent;color:#566058;font:500 15px/1.2 var(--font-body, 'Degular', -apple-system, sans-serif);cursor:pointer;transition:color 150ms,background-color 150ms}.ds-tab:hover{color:#0a0e0c}.ds-tab[aria-selected=true]{background:#fff;color:#0a0e0c;box-shadow:0 1px 2px rgba(10,14,12,.05),0 0 0 1px #dce2dc}.ds-tab:focus-visible{outline:2px solid #0a8f5c;outline-offset:2px}"
+    },
+    {
+      "name": "Section Index",
+      "kind": "nav",
+      "refersTo": "toc-link-current",
+      "description": "Sticky left index; current item on mint wash.",
+      "html": "<nav class=\"ds-toc\"><p class=\"ds-toc-title\">On this page</p><a class=\"ds-toc-link\" href=\"#\" aria-current=\"true\">Connect your tool</a><a class=\"ds-toc-link\" href=\"#\">Try it live</a><a class=\"ds-toc-link ds-mono\" href=\"#\">get-pricing</a></nav>",
+      "css": ".ds-toc{width:208px;font-family:var(--font-body, 'Degular', -apple-system, sans-serif)}.ds-toc-title{font-size:13px;font-weight:500;color:#566058;margin:0 0 10px 10px}.ds-toc-link{display:block;padding:6px 10px;border-radius:12px;color:#566058;font-size:15px;line-height:1.35;text-decoration:none;transition:color 150ms,background-color 150ms}.ds-toc-link:hover{color:#076c45}.ds-toc-link[aria-current=true]{background:#ecfaf2;color:#055534;font-weight:500}.ds-mono{font-family:'Degular Mono', 'SF Mono', ui-monospace, monospace;font-size:13.5px;padding-left:22px}.ds-toc-link:focus-visible{outline:2px solid #0a8f5c;outline-offset:2px}"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Mono pill naming the tool a prompt triggers.",
+      "html": "<span class=\"ds-chip\">get-embed-code</span>",
+      "css": ".ds-chip{font-family:'Degular Mono', 'SF Mono', ui-monospace, monospace;font-size:13px;padding:4px 11px;border-radius:9999px;background:#e4ebe6;color:#252b28;white-space:nowrap}"
+    },
+    {
+      "name": "Endpoint Card",
+      "kind": "card",
+      "refersTo": "endpoint-card",
+      "description": "Server URL at display scale in mono with Copy URL; the first-viewport anchor.",
+      "html": "<div class=\"ds-endpoint\"><div><p class=\"ds-endpoint-label\">Server URL</p><p class=\"ds-endpoint-url\"><span>https://</span>mcp.cuprice.io/mcp</p></div><button class=\"ds-endpoint-btn\">Copy URL</button></div>",
+      "css": ".ds-endpoint{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 18px 18px 28px;background:#fff;border:1px solid #dce2dc;border-radius:20px;box-shadow:0 2px 6px -1px rgba(10,14,12,.07),0 4px 12px -2px rgba(10,14,12,.05)}.ds-endpoint-label{margin:0 0 4px;font:500 13px/1.35 var(--font-body, 'Degular', -apple-system, sans-serif);color:#566058}.ds-endpoint-url{margin:0;font:400 28px/1.2 'Degular Mono', 'SF Mono', ui-monospace, monospace;color:#0a0e0c}.ds-endpoint-url span{color:#566058}.ds-endpoint-btn{min-height:48px;padding:12px 20px;border:0;border-radius:16px;background:#076c45;color:#fff;font:500 16px/1 var(--font-body, 'Degular', -apple-system, sans-serif);cursor:pointer;transition:background-color 150ms}.ds-endpoint-btn:hover{background:#055534}.ds-endpoint-btn:focus-visible{outline:2px solid #0a8f5c;outline-offset:2px}"
+    },
+    {
+      "name": "Code Block",
+      "kind": "card",
+      "refersTo": "code-block",
+      "description": "Figure with file caption bar, ghost Copy, one-ink-one-green syntax.",
+      "html": "<figure class=\"ds-code\"><figcaption class=\"ds-code-bar\"><span>.cursor/mcp.json</span><button class=\"ds-code-copy\">Copy</button></figcaption><pre>{\n  <span class=\"k\">\"url\"</span><span class=\"p\">:</span> <span class=\"s\">\"https://mcp.cuprice.io/mcp\"</span>\n}</pre></figure>",
+      "css": ".ds-code{margin:0;background:#f5f8f6;border:1px solid #dce2dc;border-radius:12px;overflow:hidden}.ds-code-bar{display:flex;align-items:center;justify-content:space-between;min-height:44px;padding:6px 6px 6px 16px;border-bottom:1px solid #dce2dc;font:13px 'Degular Mono', 'SF Mono', ui-monospace, monospace;color:#566058}.ds-code-copy{min-height:32px;padding:5px 11px;border:1px solid transparent;border-radius:16px;background:transparent;color:#566058;font:500 13.5px/1 var(--font-body, 'Degular', -apple-system, sans-serif);cursor:pointer;transition:color 150ms,background-color 150ms}.ds-code-copy:hover{color:#076c45;background:#ecfaf2}.ds-code-copy:focus-visible{outline:2px solid #0a8f5c;outline-offset:2px}.ds-code pre{margin:0;padding:14px 16px 16px;font:14px/1.7 'Degular Mono', 'SF Mono', ui-monospace, monospace;color:#252b28;overflow-x:auto}.ds-code .k{color:#0a0e0c}.ds-code .s{color:#076c45}.ds-code .p{color:#566058}"
+    },
+    {
+      "name": "Console Input",
+      "kind": "input",
+      "refersTo": "console-input",
+      "description": "Argument field inside the dark live console.",
+      "html": "<div class=\"ds-console\"><label class=\"ds-field-label\">shareId</label><input class=\"ds-field\" placeholder=\"your-share-id\"></div>",
+      "css": ".ds-console{padding:16px;background:#0a0e0c;border-radius:24px}.ds-field-label{display:block;margin-bottom:6px;font:500 13px var(--font-body, 'Degular', -apple-system, sans-serif);color:rgba(244,247,245,.74)}.ds-field{width:260px;min-height:42px;padding:9px 14px;background:#151a17;color:#f4f7f5;border:1px solid #3a4240;border-radius:16px;font:400 15px/1.4 'Degular Mono', 'SF Mono', ui-monospace, monospace;caret-color:#34c88a;transition:border-color 150ms}.ds-field::placeholder{color:rgba(244,247,245,.5)}.ds-field:hover{border-color:#566058}.ds-field:focus-visible{outline:2px solid #34c88a;outline-offset:2px;border-color:#12a86d}"
+    },
+    {
+      "name": "Closing Card",
+      "kind": "custom",
+      "refersTo": "button-on-green",
+      "description": "The one gradient block, at the end of the page.",
+      "html": "<section class=\"ds-close\"><h2>Connect once. Then just ask.</h2><p>Build your pricing in Cuprice and publish it.</p><a class=\"ds-on-green\" href=\"#\">Copy server URL</a></section>",
+      "css": ".ds-close{padding:56px;border-radius:24px;background:linear-gradient(135deg,#033d26 0%,#076c45 60%,#0a8f5c 100%);color:#fff;font-family:var(--font-body, 'Degular', -apple-system, sans-serif)}.ds-close h2{margin:0;font:400 44px/1.06 'Degular Display', 'Degular', -apple-system, sans-serif;max-width:16ch}.ds-close p{margin:14px 0 30px;font-size:17.5px}.ds-on-green{display:inline-flex;min-height:42px;align-items:center;padding:10px 16px;border-radius:16px;background:#fff;color:#055534;font:500 15px/1 var(--font-body, 'Degular', -apple-system, sans-serif);text-decoration:none;transition:background-color 150ms}.ds-on-green:hover{background:#ecfaf2;color:#033d26}.ds-on-green:focus-visible{outline:2px solid #fff;outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Operator's Reference",
+    "overview": "This page is one surface of the Cuprice brand book v1.1 (https://cuprice-design-system-brand-book-v11.netlify.app/), not a new identity. Tokens mirror `app.cuprice.io/src/app/design-tokens.css` and the brand book, and the brand book's twelve hard rules (PRODUCT.md, Brand Commitments) bind every later surface here. The world is calm and exact: an off-white green page, white hairline cards, one green for every action, Degular Display at regular weight for headlines and Degular Mono wherever a value is something you would paste or count.\n\nThe page reads as a docs reference rather than a landing page. A sticky section index sits on the left. The main column puts the one thing you need, the server URL at display scale in mono with a single Copy action, inside the first viewport. Density is moderate. Cards are white on the green-tinted page, separated by a 1px neutral-200 hairline and a low green-black shadow. One dark instrument panel holds the live calls, and one green gradient card closes the page. Every other surface stays light.\n\nMotion is small and has a purpose. Colour and shadow fade in 150ms on hover, tab panels fade in over 220ms, and the console has the page's one authored moment.",
+    "keyCharacteristics": [
+      "Green-tinted neutrals throughout; green is the only hue.",
+      "Headlines in Degular Display 400 at tracking 0, never bold, never uppercase.",
+      "Mono for URLs, tool names, parameters, numbers and code; body face for prose.",
+      "White hairline cards at 16px radius; pills for segmented tabs and chips.",
+      "One dark block (the live console) and one gradient block (the close) per page.",
+      "One line-art scene, the brand's own asset, in the first viewport only."
+    ],
+    "rules": [
+      {
+        "name": "The Green Only Rule",
+        "body": "Green is the only hue. Status red (loss-on-dark on the console, error on light) appears only to report a failure.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Ink, One Green Rule",
+        "body": "Syntax colouring uses ink plus one green. On light: keys fg-1, strings and flags green-700, punctuation and comments fg-3, numbers fg-1 at 500. On dark: keys fg-on-dark, strings green-300, numbers green-200, punctuation fg-on-dark-3. No rainbow themes.",
+        "section": "colors"
+      },
+      {
+        "name": "The Contrast-First Fill Rule",
+        "body": "Primary fills are green-700, never green-600. Green-600 is for rings and borders.",
+        "section": "colors"
+      },
+      {
+        "name": "The Never Bold Display Rule",
+        "body": "Degular Display is set at 400 with letter-spacing 0. No bold headlines, no uppercase, no tracked eyebrow labels above them.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mono Means Value Rule",
+        "body": "Mono is reserved for things that are literal: URLs, tool and parameter names, numbers, file paths, code. Prose never goes mono for style.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Dark Block Rule",
+        "body": "A page carries one dark surface, the live-call console. Everything else is light, except the single gradient close.",
+        "section": "elevation"
+      },
+      {
+        "name": "The No Halo Rule",
+        "body": "No outer glows. In the console, state shows as an inset 1px green ring (rgba 52,200,138) and never as an outer glow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Colour-or-Shadow Hover Rule",
+        "body": "Hover changes colour, background or shadow only. Nothing moves, scales or lifts on hover.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do fill primary actions green-700 with white text and hover to green-800.",
+      "Do use the 16px radius for buttons and inputs, and pills for segmented tabs and chips.",
+      "Do set every literal value (URL, tool name, parameter, number, path) in Degular Mono.",
+      "Do keep headlines Degular Display 400 at tracking 0, sentence case.",
+      "Do separate surfaces with a 1px neutral-200 hairline plus the Rest shadow.",
+      "Do use the brand's own illustration assets unedited (the hero scene is il_mcp_connection, including its shadow ellipse and filled star spot), one per viewport at 200–360px, hidden when it would push the primary action down.",
+      "Do keep inline identifiers whole: `nowrap` plus `<wbr>` after slashes.",
+      "Do show focus with a 2px ring: green-600 on light, green-400 on dark, white on the gradient.",
+      "Do keep deprecated tools (get-receipt) off the page. Only the live tools/list readout may name it, labelled as deprecated."
+    ],
+    "donts": [
+      "Don't use uppercase outside real acronyms (MCP, API, JSON), and don't put tracked eyebrow labels above headings.",
+      "Don't bold Degular Display or switch the display face to a system font.",
+      "Don't add a second hue, emoji, or icons from borrowed sets; use the Cuprice stroke set only (2px stroke, round caps).",
+      "Don't add a second dark block or a second gradient card to a page.",
+      "Don't use outer glows or halos, or hover effects that move, lift or scale.",
+      "Don't use left-border accent cards or icon-in-circle grids.",
+      "Don't show decorative data, invented Share IDs, usage numbers or customer pricing.",
+      "Don't fill primary buttons with green-600; it fails white-text contrast."
+    ]
+  }
+}

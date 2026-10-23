@@ -10,17 +10,17 @@ Website: https://cuprice.io
 
 ## What is Cuprice?
 
-Cuprice lets you build feature-based pricing pages and embed them on any website. Users can pick a plan, customize features, and pay via Stripe — all without leaving your site.
+Cuprice lets you build feature-based pricing pages and embed them on any website. Buyers pick a plan or build their own, then continue to the checkout link you set for that plan.
 
 ## What is this MCP server?
 
-This server exposes Cuprice's public APIs as MCP tools. AI assistants can fetch pricing data, generate embed code, look up purchase receipts, and get CSS class names for customization.
+This server exposes Cuprice's public APIs as MCP tools. AI assistants can fetch pricing data, generate embed code, and get CSS class names for customization. The tools are read-only and need no API key.
 
 ## Setup
 
 ### Remote (no install)
 
-Add to `.cursor/mcp.json`:
+Cursor, `.cursor/mcp.json`:
 
 ```json
 {
@@ -31,6 +31,39 @@ Add to `.cursor/mcp.json`:
   }
 }
 ```
+
+Claude Code:
+
+```bash
+claude mcp add --transport http cuprice https://mcp.cuprice.io/mcp
+```
+
+VS Code, `.vscode/mcp.json`:
+
+```json
+{
+  "servers": {
+    "cuprice": {
+      "type": "http",
+      "url": "https://mcp.cuprice.io/mcp"
+    }
+  }
+}
+```
+
+Windsurf, `~/.codeium/windsurf/mcp_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "cuprice": {
+      "serverUrl": "https://mcp.cuprice.io/mcp"
+    }
+  }
+}
+```
+
+Claude Desktop: Settings → Connectors → Add custom connector, URL `https://mcp.cuprice.io/mcp`.
 
 ---
 
@@ -51,11 +84,12 @@ Get public pricing data for a project — plans, features, prices, and theme set
 
 ### get-embed-code
 
-Get a ready-to-use code snippet to embed a Cuprice pricing table.
+Get a ready-to-use code snippet to embed a Cuprice pricing table or billing widget.
 
 **Input:**
 - `shareId` (string, required) — The project's Share ID
-- `framework` (string, optional) — "html", "nextjs", or "react". Default: "html"
+- `framework` (string, optional) — "html", "nextjs", "react", or "vue". Default: "html"
+- `widget` (string, optional) — "pricing" or "billing". Default: "pricing"
 
 **Output:** Code snippet for the specified framework.
 
@@ -67,21 +101,9 @@ Get a ready-to-use code snippet to embed a Cuprice pricing table.
 
 ---
 
-### get-receipt
+### get-receipt (deprecated)
 
-Get purchase details from a Stripe checkout session.
-
-**Input:**
-- `sessionId` (string, required) — Stripe Checkout session ID (from the redirect URL after payment)
-- `shareId` (string, required) — The project's Share ID
-
-**Output:** Receipt with planName, customPlan (boolean), total, currency, customer email, billingInterval, subscriptionId, and metadata containing purchased feature details.
-
-**Public endpoint used:** `GET /api/stripe/receipt?session_id=...&shareId=...`
-
-**Feature extraction from metadata:**
-- Regular plans: `metadata.planId` — look up features via get-pricing tool
-- Custom plans: `metadata.featureDetails_0`, `featureDetails_1`, etc. — join and parse as JSON
+Stripe checkout was removed from Cuprice, so this tool no longer returns receipts. It stays registered so existing setups do not break, and it answers with a deprecation notice. Use get-pricing for plan details and your payment provider for receipts.
 
 ---
 
@@ -105,6 +127,9 @@ Get all CSS class names available for customizing the Cuprice pricing widget.
 | `.cuprice-custom-plan-badge` | "Custom" badge |
 | `.cuprice-custom-plan-title` | Custom card title |
 | `.cuprice-custom-plan-feature-text` | Feature bullet text |
+| `.cuprice-custom-plan-feature-icon` | Feature checkmark icon |
+| `.cuprice-comparison-table` | Feature comparison table container |
+| `.cuprice-powered-by` | Powered by Cuprice footer |
 
 Use `!important` on all CSS properties to override scoped widget styles.
 
@@ -121,12 +146,9 @@ Add to any HTML page:
 
 The widget auto-resizes, loads asynchronously, and is CSS-isolated.
 
-## Feature Gating
+## Checkout and feature access
 
-After Stripe checkout, the success URL receives a `session_id`. Use the get-receipt tool to find which features were purchased:
-
-- **Regular plans:** Receipt metadata contains `planId`. Use get-pricing to look up plan features.
-- **Custom plans:** Receipt metadata contains `featureDetails_0`, `featureDetails_1`, etc. Join and parse as JSON to get feature names and prices.
+Cuprice hands the buyer to the checkout link you set on each plan. Receipts and feature access live with your payment provider; use get-pricing to read which features a plan includes.
 
 ---
 
