@@ -23,7 +23,7 @@ The pricing page a founder built in Cuprice reaches their codebase through their
 - Transport: Streamable HTTP, stateless. `POST /mcp` takes JSON-RPC and answers as `text/event-stream` (`event: message` + `data: {...}`); `tools/list` and `tools/call` work without an `initialize` round. `GET /mcp` returns a JSON summary; `GET /healthz` returns `{status: "ok"}`.
 - Self-host: `npm run build && npm start` (HTTP on `:5000`), `npm run start:stdio` for stdio. Docker compose on the Cuprice Azure VM serves production behind nginx.
 - Open source: GitHub `eynullabeyli/cuprice-mcp` (public, MIT).
-- Docs: `https://docs.cuprice.io/mcp`; machine-readable `/llms.txt` and `/llms-full.txt` on this host.
+- Docs: `https://docs.cuprice.io` (the docs site's `/mcp` path is its own docs-search MCP server, so it shows JSON in a browser, not a page); machine-readable `/llms.txt` and `/llms-full.txt` on this host.
 - The Share ID comes from publishing a project in Cuprice (`/share/<shareId>` link; `POST /api/v1/projects/{slug}/publish` returns it).
 
 ## Capabilities and Constraints

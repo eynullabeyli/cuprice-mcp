@@ -3,7 +3,8 @@
 > Public API tools for integrating Cuprice pricing widgets via Model Context Protocol.
 
 Endpoint: POST https://mcp.cuprice.io/mcp
-Docs: https://docs.cuprice.io/mcp
+Docs: https://docs.cuprice.io
+Docs search MCP server: https://docs.cuprice.io/mcp
 Website: https://cuprice.io
 
 ---

@@ -742,6 +742,7 @@ pre.pane__body { white-space: pre; }
 .links__item:hover .links__path { color: var(--green-700); }
 .links__desc { font-size: 15px; }
 .links__item .icon { color: var(--fg-3); }
+.links__note { margin-top: 14px; font-size: 15px; color: var(--fg-3); max-width: 70ch; }
 .links__item:hover .icon { color: var(--green-700); }
 
 /* ---------- Close ---------- */

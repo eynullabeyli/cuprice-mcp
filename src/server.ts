@@ -31,7 +31,7 @@ app.get("/mcp", (_req, res) => {
     description: "Cuprice MCP Server — public API tools for pricing widget integration",
     endpoint: "POST /mcp",
     tools: TOOLS_INFO,
-    docs: "https://docs.cuprice.io/mcp",
+    docs: "https://docs.cuprice.io",
   });
 });
 

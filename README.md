@@ -81,6 +81,6 @@ npm test
 
 ## Links
 
-- [Documentation](https://docs.cuprice.io/mcp)
+- [Documentation](https://docs.cuprice.io)
 - [llms.txt](https://mcp.cuprice.io/llms.txt)
 - [llms-full.txt](https://mcp.cuprice.io/llms-full.txt)

@@ -70,7 +70,7 @@
       "logo": "https://mcp.cuprice.io/logo.png"
     },
     "softwareVersion": "1.0.0",
-    "documentation": "https://docs.cuprice.io/mcp",
+    "documentation": "https://docs.cuprice.io",
     "featureList": [
       "Read published pricing plans and features by Share ID",
       "Generate HTML, Next.js, React and Vue embed code",
@@ -125,7 +125,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <span class="brand__product">MCP server</span>
       </a>
       <nav class="topnav" aria-label="Site">
-        <a class="topnav__link" href="https://docs.cuprice.io/mcp">Docs</a>
+        <a class="topnav__link" href="https://docs.cuprice.io">Docs</a>
         <a class="topnav__link" href="https://github.com/eynullabeyli/cuprice-mcp">GitHub</a>
         <a class="btn btn--secondary btn--sm" href="https://app.cuprice.io">Open Cuprice</a>
       </nav>
@@ -637,8 +637,9 @@ npm run start:stdio    # or stdio</pre>
           <li><a class="links__item" href="/llms.txt"><span class="links__path">/llms.txt</span><span class="links__desc">Short index of the tools and docs</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></li>
           <li><a class="links__item" href="/llms-full.txt"><span class="links__path">/llms-full.txt</span><span class="links__desc">Full reference, tools and REST API</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></li>
           <li><a class="links__item" href="/mcp"><span class="links__path">GET /mcp</span><span class="links__desc">Server name, version and tool list as JSON</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></li>
-          <li><a class="links__item" href="https://docs.cuprice.io/mcp"><span class="links__path">docs.cuprice.io/mcp</span><span class="links__desc">The MCP page in the Cuprice docs</span><svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+          <li><a class="links__item" href="https://docs.cuprice.io"><span class="links__path">docs.cuprice.io</span><span class="links__desc">The Cuprice docs, with the REST API reference</span><svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></li>
         </ul>
+        <p class="links__note">To let your assistant search the docs as well, add the docs MCP server the same way as this one: <code class="inline">https://docs.cuprice.io/mcp</code></p>
       </section>
 
       <!-- Close -->
@@ -663,7 +664,7 @@ npm run start:stdio    # or stdio</pre>
       </a>
       <nav class="footer__nav" aria-label="Footer">
         <a href="https://cuprice.io">cuprice.io</a>
-        <a href="https://docs.cuprice.io/mcp">Docs</a>
+        <a href="https://docs.cuprice.io">Docs</a>
         <a href="https://github.com/eynullabeyli/cuprice-mcp">GitHub</a>
         <a href="/llms.txt">llms.txt</a>
         <a href="/healthz">Status</a>
